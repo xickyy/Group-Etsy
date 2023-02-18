@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, redirect
+from flask import Blueprint, jsonify, redirect, render_template
 from app.models import Product
 from app.forms import ProductForm
 
@@ -23,3 +23,5 @@ def add_products():
             db.session.commit()
             return redirect(f'/products/{product.id}')
     )
+
+    # To do: render_template
