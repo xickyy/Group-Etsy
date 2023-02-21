@@ -18,6 +18,7 @@ def add_products():
                 description = form.description.data,
                 price = form.price.data,
                 imageURL = form.imageURL.data
+                # userId -> flask_login (current_user method, key into .id)
             )
             db.session.add(product)
             db.session.commit()
