@@ -1,5 +1,4 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from models import User
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -11,11 +10,12 @@ class Product(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
-    imageURL = db.Column(db.String)
-    userId = db.Column(db.Integer, db.ForeignKey("users.id"))
+    image_URL = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     user = db.relationship("User", back_populates="products")
     reviews = db.relationship("Review", back_populates="products")
+    cart_items = db.relationship("CartItem", back_populates="products")
 
     def to_dict(self):
         return {
@@ -23,8 +23,8 @@ class Product(db.Model):
             'title': self.title,
             'description': self.description,
             'price': self.price,
-            'imageURL': self.imageURL,
-            'userId': self.userId
+            'imageURL': self.image_URL,
+            'userId': self.user_id
         }
 
     # To do: to_dict, relationships 
