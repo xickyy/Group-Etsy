@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, DecimalField
+from wtforms import StringField, TextAreaField, DecimalField, SubmitField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Product
 
@@ -8,3 +8,4 @@ class ProductForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired()])
     price = DecimalField('Price', validators=[DataRequired()])
     imageURL = StringField("Image URL")
+    submit = SubmitField('Submit')
