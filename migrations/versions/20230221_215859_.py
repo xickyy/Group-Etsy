@@ -8,6 +8,10 @@ Create Date: 2023-02-21 21:58:59.984503
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
 revision = '9907f28fccbb'

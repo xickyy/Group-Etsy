@@ -11,7 +11,7 @@ class Product(db.Model):
     description = db.Column(db.String, nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
     image_URL = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(f"{SCHEMA}.users.id"))
 
     user = db.relationship("User", back_populates="products")
     reviews = db.relationship("Review", back_populates="products")
