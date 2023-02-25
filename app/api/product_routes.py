@@ -5,13 +5,13 @@ from flask_login import current_user
 
 product_routes = Blueprint('products', __name__)
 
-@product_routes.route('/products', methods=["GET"])
+@product_routes.route('/', methods=["GET"])
 def products():
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
 
 
-@product_routes.route('/products', methods=['POST'])
+@product_routes.route('/', methods=['POST'])
 def add_products():
     form = ProductForm()
     if form.validate_on_submit():

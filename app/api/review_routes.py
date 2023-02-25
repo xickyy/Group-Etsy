@@ -5,7 +5,7 @@ from flask_login import current_user
 
 review_routes = Blueprint('reviews', __name__)
 
-@review_routes.route('/products/:product_id/reviews', methods=["GET"])
+@review_routes.route('/products/:product_id', methods=["GET"])
 def reviews():
     reviews = Review.query.all()
     return {'reviews': [review.to_dict() for review in reviews]}
