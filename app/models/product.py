@@ -26,7 +26,7 @@ class Product(db.Model):
             'imageURL': self.image_URL,
             # 'userId': self.user_id
             'user': self.user.to_dict_flat_user(),
-            'reviews': { review.id: review.to_dict() for review in self.reviews },
+            'reviews': { review.id: review.to_dict() for review in self.reviews }
         }
 
     def to_dict_flat_product(self):

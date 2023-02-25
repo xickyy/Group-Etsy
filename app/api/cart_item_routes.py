@@ -10,4 +10,4 @@ def cart_items():
     Query for all cart items and returns them in a list of cart item dictionaries.
     """
     cart_items = CartItem.query.all()
-    return {'cartItems': [review.to_dict() for cart_item in cart_items]}
+    return {'cartItems': [cart_item.to_dict() for cart_item in cart_items]}
