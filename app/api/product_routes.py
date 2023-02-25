@@ -7,12 +7,17 @@ product_routes = Blueprint('products', __name__)
 
 @product_routes.route('/', methods=["GET"])
 def products():
+    """
+    Query for all products and returns them in a list of product dictionaries.
+    """
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
 
-
 @product_routes.route('/', methods=['POST'])
 def add_products():
+    """
+    This function creates a new product.
+    """
     form = ProductForm()
     if form.validate_on_submit():
         product = Product(
@@ -26,5 +31,4 @@ def add_products():
         db.sesson.add(product)
         db.session.commit()
         return product.to_dict()
-
   

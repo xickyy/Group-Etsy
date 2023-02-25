@@ -1,18 +1,33 @@
 from app.models import db, User, environment, SCHEMA
 
-
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        first_name='Demo', 
+        last_name='User', 
+        image_URL='https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/800px-SpongeBob_SquarePants_character.svg.png',
+        email='demo@aa.io', 
+        username='Demo', 
+        password='password')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        first_name='Marnie',
+        last_name='Jones',
+        image_URL='https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png',
+        email='marnie@aa.io', 
+        username='marnie', 
+        password='password')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        first_name='Bobbie',
+        last_name='Smith',
+        image_URL='https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Squidward_Tentacles.svg/800px-Squidward_Tentacles.svg.png',
+        email='bobbie@aa.io', 
+        username='bobbie', 
+        password='password')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    users = [demo, marnie, bobbie]
+    for user in users:
+        db.session.add(user)
+
     db.session.commit()
 
 

@@ -2,22 +2,22 @@ from app.models import db, CartItem, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_cart_items():
-    item_one = CartItem(
-        userId=1, productId=2)
-    item_two = CartItem(
-        userId=1, productId=3)
-    item_three = CartItem(
-        userId=2, productId=3)
-    item_four = CartItem(
-        userId=3, productId=1)
-    item_five = CartItem(
-        userId=3, productId=2)
+    item1 = CartItem(
+        user_id=1, product_id=2)
+    item2 = CartItem(
+        user_id=1, product_id=3)
+    item3 = CartItem(
+        user_id=2, product_id=3)
+    item4 = CartItem(
+        user_id=3, product_id=1)
+    item5 = CartItem(
+        user_id=3, product_id=2)
 
-    db.session.add(item_one)
-    db.session.add(item_two)
-    db.session.add(item_three)
-    db.session.add(item_four)
-    db.session.add(item_five)
+
+    items = [item1, item2, item3, item4, item5]
+    for item in items:
+        db.session.add(item)
+    
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -26,7 +26,7 @@ def seed_cart_items():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_reviews():
+def undo_cart_items():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.cart_items RESTART IDENTITY CASCADE;")
     else:

@@ -10,8 +10,11 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    image_URL = db.Column(db.String)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     products = db.relationship("Product", back_populates="user")
@@ -32,6 +35,22 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'imageURL': self.image_URL,
+            'email': self.email,
             'username': self.username,
-            'email': self.email
+            'products': { product.id: product.to_dict() for product in self.products },
+            'reviews': { review.id: review.to_dict() for review in self.reviews },
+            'cartItems': { cart_item.id: cart_item.to_dict() for cart_item in self.cart_items }
+        }
+
+    def to_dict_flat_user(self):
+        return {
+            'id': self.id,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'imageURL': self.image_URL,
+            'email': self.email,
+            'username': self.username
         }

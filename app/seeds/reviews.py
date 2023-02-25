@@ -2,16 +2,17 @@ from app.models import db, Review, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_reviews():
-    review_one = Review(
-        body="This is a really good pillow!", stars=4, productId=1, userId=3)
-    review_two = Review(
-        body="Broke the first try!", stars=1, productId=2, userId=1)
-    review_three = Review(
-        body="Great quality, but got the wrong size.", stars=3, productId=3, userId=2)
+    review1 = Review(
+        body="This is a really good pillow!", stars=4, product_id=1, user_id=3)
+    review2 = Review(
+        body="Broke the first try!", stars=1, product_id=2, user_id=1)
+    review3 = Review(
+        body="Great quality, but got the wrong size.", stars=3, product_id=3, user_id=2)
 
-    db.session.add(review_one)
-    db.session.add(review_two)
-    db.session.add(review_three)
+    reviews = [review1, review2, review3]
+    for review in reviews:
+        db.session.add(review)
+
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

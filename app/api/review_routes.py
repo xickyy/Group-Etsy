@@ -7,12 +7,18 @@ review_routes = Blueprint('reviews', __name__)
 
 @review_routes.route('/products/:product_id', methods=["GET"])
 def reviews():
+    """
+    Query for all reviews and returns them in a list of review dictionaries.
+    """
     reviews = Review.query.all()
     return {'reviews': [review.to_dict() for review in reviews]}
 
 
-@review_routes.route('/products/:product_id/reviews', methods=["POST"])
+@review_routes.route('/products/:product_id', methods=["POST"])
 def add_reviews(product_id):
+    """
+    This function creates a new review.
+    """
     form = ReviewForm()
     if form.validate_on_submit():
         review = Review(
