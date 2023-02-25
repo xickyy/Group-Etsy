@@ -91,7 +91,7 @@ const CreateProductForm = () => {
             </div>
         </form>
     </section>
-  )
-};
+): null;
+}
 
 export default CreateProductForm;
