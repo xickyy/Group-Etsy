@@ -68,12 +68,22 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    print("###", list(app.url_map.iter_rules()))
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
-                    app.view_functions[rule.endpoint].__doc__ ]
-                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
-    return route_list
-
+    route_dict = {}
+    for rule in app.url_map.iter_rules():
+        if rule.endpoint == 'static':
+            continue
+        
+        route_path = rule.rule
+        if route_path not in route_dict:
+            route_dict[route_path] = []
+        
+        for method in rule.methods:
+            if method in acceptable_methods:
+                view_func = app.view_functions[rule.endpoint]
+                docstring = view_func.__doc__
+                route_dict[route_path].append((method, docstring))
+    
+    return route_dict
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import ProductPage from "./components/ProductPage";
+import CreateProductForm from "./components/CreateProductForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/products">
             <ProductPage />
+          </Route>
+          <Route exact path="/products/create">
+            <CreateProductForm />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>
