@@ -30,7 +30,7 @@ def add_products():
             imageURL = form.imageURL.data,
             userId = current_user.id
         )
-        db.sesson.add(product)
+        db.session.add(product)
         db.session.commit()
         return product.to_dict()
 
