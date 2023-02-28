@@ -11,6 +11,7 @@ function Navigation({ isLoaded }){
 		<ul>
 			<li>
 				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/products/create">Create a Product Listing</NavLink>
 			</li>
 			{isLoaded && (
 				<li>
