@@ -35,8 +35,6 @@ const CreateProductForm = () => {
       imageURL,
     };
 
-    console.log("CREATING PRODUCT")
-
     let createdProduct = await dispatch(makeProductThunk(payload)).catch(
       async (res) => {
         const data = await res.json();
@@ -44,10 +42,9 @@ const CreateProductForm = () => {
       }
     );
 
-    // if (createdProduct) {
-    //     console.log("ENTERING IF BLOCK")
-    //     history.push(`/products/${createdProduct.id}`)
-    // }
+    if (createdProduct) {
+        history.push(`/products/${createdProduct.id}`)
+    }
   };
 
   return sessionUser.id ? (
