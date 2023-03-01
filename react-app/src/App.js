@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import ProductPage from "./components/ProductPage";
 import CreateProductForm from "./components/CreateProductForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ProductsList from "./components/ProductsList";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
           </Route>
           <Route exact path="/products">
             <ProductPage />
+            <ProductsList />
           </Route>
           <Route exact path="/products/create">
             <CreateProductForm />
