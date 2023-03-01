@@ -20,7 +20,6 @@ const addProduct = (product) => {
 export const allProductsThunk = () => async (dispatch) => {
     const res = await csrfFetch('/api/products');
     const data = await res.json();
-    console.log("THUNK DATA#####",data)
     dispatch(getProducts(data.products))
     return res;
 };

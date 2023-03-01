@@ -14,8 +14,6 @@ const ProductPage = () => {
     return (
         <div>
             Product Page 
-            <br></br>
-            (Might need Product Grid + Product Cards)
         </div>
     )
 }
