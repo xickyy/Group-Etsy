@@ -27,6 +27,9 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('first_name', sa.String(length=50), nullable=False),
+    sa.Column('last_name', sa.String(length=50), nullable=False),
+    sa.Column('image_URL', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

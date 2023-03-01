@@ -1,4 +1,4 @@
-import { csrfFetch } from "./csrf";
+// import { csrfFetch } from "./csrf";
 
 const GET_PRODUCTS = "products/getProducts";
 const ADD_PRODUCT = "products/addProduct";
@@ -18,14 +18,14 @@ const addProduct = (product) => {
 };
 
 export const allProductsThunk = () => async (dispatch) => {
-    const res = await csrfFetch('/api/products');
+    const res = await fetch('/api/products');
     const data = await res.json();
     dispatch(getProducts(data.products))
     return res;
 };
 
 export const makeProductThunk = (product) => async (dispatch) => {
-    const res = await csrfFetch('/api/products', {
+    const res = await fetch('/api/products/new', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
@@ -51,7 +51,7 @@ const productReducer = (state = initialState, action) => {
         case ADD_PRODUCT:
             newState[action.product.id] = action.product;
             return newState;
-        default: 
+        default:
             return newState
     }
 }
