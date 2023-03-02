@@ -25,6 +25,18 @@ def product(product_id):
     return product.to_dict()
 
 
+@product_routes.route('/<int:product_id>', methods=["DELETE"])
+def deletes_a_product(product_id):
+    """
+    Deletes a product by ID
+    """
+    product = Product.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return {'message': 'Product has been deleted!'}
+
+
+
 @product_routes.route('/new', methods=['POST'])
 @login_required
 def add_products():
