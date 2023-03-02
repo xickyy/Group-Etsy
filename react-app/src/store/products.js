@@ -2,6 +2,7 @@
 
 const GET_PRODUCTS = "products/getProducts";
 const ADD_PRODUCT = "products/addProduct";
+const GET_ONE_PRODUCT = "products/getOneProduct"
 
 const getProducts = (products) => {
     return {
@@ -17,10 +18,24 @@ const addProduct = (product) => {
     };
 };
 
+const getOneProduct = (product) => {
+    return {
+        type: GET_ONE_PRODUCT,
+        product
+    }
+};
+
 export const allProductsThunk = () => async (dispatch) => {
     const res = await fetch('/api/products');
     const data = await res.json();
     dispatch(getProducts(data.products))
+    return res;
+};
+
+export const oneProductThunk = (id) => async (dispatch) => {
+    const res = await fetch(`/api/products/${id}`);
+    const data = await res.json();
+    dispatch(getOneProduct(data))
     return res;
 };
 
@@ -50,6 +65,9 @@ const productReducer = (state = initialState, action) => {
             return newState;
         case ADD_PRODUCT:
             newState[action.product.id] = action.product;
+            return newState;
+        case GET_ONE_PRODUCT:
+            newState.product = action.product
             return newState;
         default:
             return newState

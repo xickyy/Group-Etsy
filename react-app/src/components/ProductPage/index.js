@@ -1,21 +1,38 @@
 import "./ProductPage.css";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { allProductsThunk } from "../../store/products";
+import { useSelector, useDispatch } from "react-redux";
+import { oneProductThunk } from "../../store/products";
+import { useParams } from 'react-router-dom'
 
 const ProductPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
+    let { productId } = useParams()
 
     useEffect(() => {
-        dispatch(allProductsThunk()).then(() => setIsLoaded(true));
-    }, [dispatch]);
+        dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
+    }, [dispatch, productId]);
+
+    let productState = useSelector(state => state.products.product)
+
+    let reviewsArr
+    if(isLoaded){
+        reviewsArr = Object.values(productState.reviews)
+    }
 
     return (
         <div>
-            Product Page 
-            <br></br>
-            (Might need Product Grid + Product Cards)
+            { productState && reviewsArr &&
+            <div>
+                <div>{productState.title}</div>
+                <img src={productState.imageURL} alt= ''/>
+                <div>{productState.price}</div>
+                <div>{productState.description}</div>
+                {reviewsArr.map((review) => (
+                    <div>{review.body}</div>
+                ))}
+            </div>
+            }
         </div>
     )
 }

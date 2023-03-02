@@ -15,6 +15,16 @@ def products():
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
 
+
+@product_routes.route('/<int:product_id>', methods=["GET"])
+def product(product_id):
+    """
+    Query for one product.
+    """
+    product = Product.query.get(product_id)
+    return product.to_dict()
+
+
 @product_routes.route('/new', methods=['POST'])
 @login_required
 def add_products():
