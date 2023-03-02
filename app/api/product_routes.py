@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify, redirect, render_template
-from app.models import Product, Review
+from flask import Blueprint, jsonify, redirect, render_template, request
+from app.models import Product, Review, db
 from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from flask_login import current_user
@@ -15,24 +15,29 @@ def products():
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
 
-@product_routes.route('/', methods=['POST'])
+@product_routes.route('/new', methods=['POST'])
 @login_required
 def add_products():
     """
     This function creates a new product.
     """
+    print("Hitting the route!", current_user)
     form = ProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         product = Product(
             title = form.title.data,
             description = form.description.data,
             price = form.price.data,
-            imageURL = form.imageURL.data,
-            userId = current_user.id
+            image_URL = form.imageURL.data,
+            user_id = current_user.id
         )
-        db.sesson.add(product)
+        db.session.add(product)
         db.session.commit()
         return product.to_dict()
+    print("failed to validate")
+    return {"errors" : "error"}
 
 @product_routes.route('/<int:product_id>/reviews', methods=["GET"])
 def reviews(product_id):

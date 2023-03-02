@@ -87,7 +87,7 @@ const CreateProductForm = () => {
             />
 
             <div>
-                <button type="submit-button">Create New Product</button>
+                <button type="submit">Create New Product</button>
             </div>
         </form>
     </section>

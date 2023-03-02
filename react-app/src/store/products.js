@@ -1,4 +1,4 @@
-import { csrfFetch } from "./csrf";
+// import { csrfFetch } from "./csrf";
 
 const GET_PRODUCTS = "products/getProducts";
 const ADD_PRODUCT = "products/addProduct";
@@ -18,14 +18,14 @@ const addProduct = (product) => {
 };
 
 export const allProductsThunk = () => async (dispatch) => {
-    const res = await csrfFetch('/api/products');
+    const res = await fetch('/api/products');
     const data = await res.json();
-    dispatch(getProducts(data.Products))
+    dispatch(getProducts(data.products))
     return res;
 };
 
 export const makeProductThunk = (product) => async (dispatch) => {
-    const res = await csrfFetch('/api/products', {
+    const res = await fetch('/api/products/new', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
@@ -35,7 +35,7 @@ export const makeProductThunk = (product) => async (dispatch) => {
         const newProduct = await res.json();
         dispatch(addProduct(newProduct));
         return newProduct;
-      }
+    }
 };
 
 const initialState = {};
@@ -48,9 +48,11 @@ const productReducer = (state = initialState, action) => {
                 newState[product.id] = product
             });
             return newState;
-        case ADD_PRODUCT: // Can use this for updating as well later.
+        case ADD_PRODUCT:
             newState[action.product.id] = action.product;
             return newState;
+        default:
+            return newState
     }
 }
 
