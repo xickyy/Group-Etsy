@@ -21,8 +21,6 @@ const ProductPage = () => {
     if(isLoaded){
         reviewsArr = Object.values(productState.reviews)
     }
-    console.log('heyyyyyyyyyy', reviewsArr)
-
 
     const productDeleter = () => {
         const confirm = window.confirm(`Are you sure you wish to delete the product "${productState.title}"`)

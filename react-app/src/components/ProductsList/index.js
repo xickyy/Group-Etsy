@@ -13,8 +13,7 @@ const ProductsList = (products) => {
     }, [dispatch])
 
     let productsState = useSelector(state => state.products)
-
-
+  
     let PRODUCTS
     if(isLoaded){
         PRODUCTS = Object.values(productsState)
@@ -24,10 +23,10 @@ const ProductsList = (products) => {
         <div>
             {
                 PRODUCTS && PRODUCTS.map((product) => (
-                    <div key={product.id}>
+                    <div key={product.id} product={product}>
                         <div>{product.title}</div>
                         <div>{product.description}</div>
-                        <Link to={`/products/${product.id}`} ><img src={product.imageURL} alt='' /></Link>
+                        <Link to={`/products/${product.id}`} ><img src={product.imageURL} alt='img' /></Link>
                     </div>
                 ))
             }
