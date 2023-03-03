@@ -25,28 +25,15 @@ def product(product_id):
     return product.to_dict()
 
 
-@product_routes.route('/<int:product_id>', methods=["DELETE"])
-def deletes_a_product(product_id):
-    """
-    Deletes a product by ID
-    """
-    product = Product.query.get(product_id)
-    db.session.delete(product)
-    db.session.commit()
-    return {'message': 'Product has been deleted!'}
-
-
-
 @product_routes.route('/new', methods=['POST'])
 @login_required
 def add_products():
     """
     This function creates a new product.
     """
-    print("Hitting the route!", current_user)
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
+ 
     if form.validate_on_submit():
         product = Product(
             title = form.title.data,
@@ -58,8 +45,34 @@ def add_products():
         db.session.add(product)
         db.session.commit()
         return product.to_dict()
-    print("failed to validate")
     return {"errors" : "error"}
+
+@product_routes.route('/<int:product_id>', methods=["PUT"])
+def edits_a_product(product_id):
+    """
+    Edits a product by ID.
+    """
+    form = ProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        product = Product.query.get(product_id)
+       
+        for key, value in data.items():
+            setattr(product, key, value)
+        db.session.commit()
+        return product.to_dict()
+
+@product_routes.route('/<int:product_id>', methods=["DELETE"])
+def deletes_a_product(product_id):
+    """
+    Deletes a product by ID.
+    """
+    product = Product.query.get(product_id)
+    db.session.delete(product)
+    db.session.commit()
+    return {'message': 'Product has been deleted!'}
 
 @product_routes.route('/<int:product_id>/reviews', methods=["GET"])
 def reviews(product_id):
