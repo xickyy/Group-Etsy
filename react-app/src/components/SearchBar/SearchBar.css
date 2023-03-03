@@ -1,13 +1,14 @@
 .searchInputs {
-  margin-top: 20px;
   display: flex;
 }
 
 .search input {
   background-color: white;
+  border-color: black;
   border-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-right: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   font-size: 18px;
   padding: 15px;
   height: 10px;
@@ -15,11 +16,25 @@
 }
 
 .searchIcon {
-  height: 60px;
+  border: 2px;
+  border-style: solid;
+  border-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+  height: 40px;
   width: 50px;
   background-color: white;
   display: grid;
   place-items: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+.searchIcon svg {
+  font-size: 35px;
 }
 
 
@@ -58,5 +73,10 @@ a:hover {
 }
 
 #clearBtn {
-  cursor: pointer
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }

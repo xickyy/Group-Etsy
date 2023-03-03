@@ -6,6 +6,7 @@ const SearchBar = ({ placeholder, data }) => {
 
   const [allProducts, setAllProducts] = useState([]);
   const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,17 +25,26 @@ const SearchBar = ({ placeholder, data }) => {
     });
     if (searchWord === '') {
       setFilterData([])
+      setSearch('')
     } else {
       setFilterData(newFilter);
+      setSearch(searchWord)
     }
   }
+
+  const clearSearch = () => {
+    setFilterData([]);
+    setSearch('')
+  }
+
 
   return (
     <div className="search">
       <div className='searchInputs'>
-        <input type='text' placeholder={placeholder} onChange={handleFilter} />
+        <input type='text' placeholder={placeholder} value={search} onChange={handleFilter} />
         <div className='searchIcon'>
-          <i class="fa-solid fa-magnifying-glass"></i>
+          {search.length === 0 ? <i class="fa-solid fa-magnifying-glass"></i> : <i class="fa-solid fa-xmark" id='clearBtn' onClick={clearSearch}></i>}
+
         </div>
       </div>
       {filterData.length != 0 && (
