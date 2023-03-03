@@ -33,15 +33,15 @@ const deleteProduct = (id) => {
     }
 }
 
-export const deleteProductThunk = (id) => async (dispatch) => {
-    const res = await fetch(`/api/products/${id}`, {
-        method: "DELETE"
-    })
+    export const deleteProductThunk = (id) => async (dispatch) => {
+        const res = await fetch(`/api/products/${id}`, {
+            method: "DELETE"
+        })
 
-    if (res.ok) {
-        dispatch(deleteProduct(id))
-      }
-    }
+        if (res.ok) {
+            dispatch(deleteProduct(id))
+          }
+    };
 
 
     export const allProductsThunk = () => async (dispatch) => {
@@ -86,10 +86,12 @@ export const deleteProductThunk = (id) => async (dispatch) => {
                 newState[action.product.id] = action.product;
                 return newState;
             case GET_ONE_PRODUCT:
-                newState.product = action.product
+                delete newState.products
+                newState = action.product
                 return newState;
             case DELETE_PRODUCT:
-                delete newState[action.id]
+                console.log('stateeee', newState[action.products.id])
+                delete newState[action.products.id]
                 return newState;
             default:
                 return newState
