@@ -1,5 +1,3 @@
-// import { csrfFetch } from "./csrf";
-
 const GET_PRODUCTS = "products/getProducts";
 const ADD_PRODUCT = "products/addProduct";
 const GET_ONE_PRODUCT = "products/getOneProduct";
@@ -70,9 +68,16 @@ export const makeProductThunk = (product) => async (dispatch) => {
 };
 
 export const editProductThunk = (product) => async (dispatch) => {
+    const { title, description, price, imageURL } = product;
     const res = await fetch(`/api/products/${product.productId}`, {
       method: "PUT",
-      body: JSON.stringify(product),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title,
+        description,
+        price,
+        imageURL
+      }),
     });
   
     if (res.ok) {

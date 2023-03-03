@@ -45,7 +45,7 @@ const EditProductForm = () => {
         title,
         description,
         price,
-        imageURL,
+        imageURL
       };
   
       let editedProduct = await dispatch(editProductThunk(payload)).catch(
@@ -54,7 +54,7 @@ const EditProductForm = () => {
           if (data && data.errors) setErrors(data.errors);
         }
       );
-  
+      
       if (editedProduct) {
           history.push(`/products/${editedProduct.id}`)
       }

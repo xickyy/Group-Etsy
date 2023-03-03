@@ -7,6 +7,18 @@ from flask_login import login_required
 
 product_routes = Blueprint('products', __name__)
 
+# EDIT THIS LATER VALIDATINSDLFKJkdf
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @product_routes.route('/', methods=["GET"])
 def products():
     """
@@ -63,6 +75,7 @@ def edits_a_product(product_id):
             setattr(product, key, value)
         db.session.commit()
         return product.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @product_routes.route('/<int:product_id>', methods=["DELETE"])
 def deletes_a_product(product_id):
