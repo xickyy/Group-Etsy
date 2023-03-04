@@ -9,7 +9,7 @@ const ProductPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    let { productId} = useParams()
+    let { productId } = useParams()
 
     useEffect(() => {
         dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
