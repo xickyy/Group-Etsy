@@ -18,12 +18,20 @@ const ProductPage = () => {
     let productState = useSelector(state => state.products)
     let userState = useSelector(state => state.session)
 
-    let userId = userState.user.id
+    let userId
+    if (userState.user) {
+      userId = userState.user.id
+    }
 
     let reviewsArr
     if(isLoaded){
         reviewsArr = Object.values(productState.reviews)
     }
+  
+    const payload = { 
+      productId, 
+      userId
+     }
 
     const editProductInfo = () => {
       history.push(`/products/${productId}/edit`);
@@ -37,6 +45,11 @@ const ProductPage = () => {
         }
       }
 
+    const handleAddToCart = () => {
+        dispatch(addCartThunk(payload))
+        history.push("/cart_items")
+    };
+
     const userDeleteProduct = () => {
         if (userState.user && userState.user.id === productState.user.id) {
           return <button onClick={() => { productDeleter() }}>Delete Product</button>
@@ -49,20 +62,12 @@ const ProductPage = () => {
         }
       }
     
-    const payload = { 
-      productId, 
-      userId
-     }
-
-    const handleAddToCart = () => {
-        console.log("####productId",productId)
-        dispatch(addCartThunk(payload))
-        history.push("/cart_items")
-    };
-
-    const addToCart = () => {
+      const userAddCart = () => {
+        if (userState.user) {
           return <button onClick={() => { handleAddToCart() }}>Add to Cart</button>
-      }  
+        }
+      }
+    
 
     return (
         <div>
@@ -72,7 +77,7 @@ const ProductPage = () => {
                 <img src={productState.imageURL} alt= ''/>
                 <div>{productState.price}</div>
                 <div>{productState.description}</div>
-                {addToCart()}
+                {userAddCart()}
                 {reviewsArr.map((review) => (
                     <div key={review.id}>{review.body}</div>
                 ))}

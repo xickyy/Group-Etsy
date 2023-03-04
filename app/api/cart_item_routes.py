@@ -11,7 +11,7 @@ def cart_items():
     """
     Query for all cart items and returns them in a list of cart item dictionaries.
     """
-    cart_items = CartItem.query.all()
+    cart_items = CartItem.query.filter(CartItem.user_id == current_user.id).all()
     return {'cartItems': [cart_item.to_dict() for cart_item in cart_items]}
 
 @cart_item_routes.route('/', methods=["POST"])

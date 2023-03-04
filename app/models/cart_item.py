@@ -17,5 +17,5 @@ class CartItem(db.Model):
         return {
             'id': self.id,
             'user': self.user.to_dict_flat_user(),
-            'product': self.product.to_dict()
+            'product': self.product_id
         }
