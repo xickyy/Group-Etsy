@@ -23,6 +23,7 @@ export const allReviewsByProductIdThunk = (productId) => async (dispatch) => {
 };
 
 export const makeReviewThunk = (productId, review) => async (dispatch) => {
+    console.log("###### PRODUCT ID", productId)
     const res = await fetch(`/api/products/${productId}/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,6 +43,7 @@ const reviewReducer = (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {
         case GET_REVIEWS_PRODUCT:
+            console.log('######## REDUCER', action)
             action.reviews.forEach((review) => {
                 newState[review.id] = review;
             });

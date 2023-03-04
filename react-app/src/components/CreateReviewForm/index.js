@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const CreateReviewForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { reviewId } = useParams();
+    const { productId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
 
     const [body, setBody] = useState("");
@@ -20,8 +20,8 @@ const CreateReviewForm = () => {
     const updateStars = (e) => setStars(e.target.value);
 
     useEffect(() => {
-        dispatch(allReviewsByProductIdThunk(reviewId));
-      }, [dispatch, reviewId]);
+        dispatch(allReviewsByProductIdThunk(productId));
+      }, [dispatch, productId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,7 +31,7 @@ const CreateReviewForm = () => {
           stars,
         };
 
-        let createdReview = await dispatch(makeReviewThunk(reviewId, payload)).catch(
+        let createdReview = await dispatch(makeReviewThunk(productId, payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors);
@@ -39,7 +39,7 @@ const CreateReviewForm = () => {
         );
       
         if (createdReview) {
-            history.push(`/products/${reviewId}`);
+            history.push(`/products/${productId}`);
         }
     };
 
