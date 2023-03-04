@@ -39,6 +39,8 @@ input:focus {
 
 
 .dataResult {
+  position: absolute;
+  left: auto;
   margin-top: 5px;
   width: 382px;
   height: 200px;
