@@ -68,16 +68,10 @@ export const makeProductThunk = (product) => async (dispatch) => {
 };
 
 export const editProductThunk = (product) => async (dispatch) => {
-    const { title, description, price, imageURL } = product;
     const res = await fetch(`/api/products/${product.productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title,
-        description,
-        price,
-        imageURL
-      }),
+      body: JSON.stringify(product),
     });
   
     if (res.ok) {
