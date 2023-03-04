@@ -27,11 +27,11 @@ const CreateReviewForm = () => {
         e.preventDefault();
     
         const payload = {
-          review,
+          body,
           stars,
         };
 
-        let createdReview = await dispatch(makeReviewThunk(productId, payload)).catch(
+        let createdReview = await dispatch(makeReviewThunk(reviewId, payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors);
@@ -39,7 +39,7 @@ const CreateReviewForm = () => {
         );
       
         if (createdReview) {
-            history.push(`/products/${productId}`);
+            history.push(`/products/${reviewId}`);
         }
     };
 
