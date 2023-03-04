@@ -12,6 +12,7 @@ function Navigation({ isLoaded }) {
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
 					<NavLink id='link' exact to="/">Home</NavLink>
+					<NavLink exact to="/products">Products</NavLink>
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 				</li>

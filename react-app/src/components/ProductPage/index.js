@@ -22,6 +22,10 @@ const ProductPage = () => {
         reviewsArr = Object.values(productState.reviews)
     }
 
+    const editProductInfo = () => {
+      history.push(`/products/${productId}/edit`);
+    };
+
     const productDeleter = () => {
         const confirm = window.confirm(`Are you sure you wish to delete the product "${productState.title}"`)
         if (confirm) {
@@ -47,6 +51,9 @@ const ProductPage = () => {
                 {reviewsArr.map((review) => (
                     <div key={review.id}>{review.body}</div>
                 ))}
+                <div>
+                  <button onClick={editProductInfo}>Edit Product</button>
+                </div>
                 {userDeleteProduct()}
             </div>
             }
