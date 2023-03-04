@@ -40,6 +40,12 @@ const ProductPage = () => {
         }
       }
 
+      const userEditProduct = () => {
+        if (userState.user && userState.user.id === productState.user.id) {
+          return <button onClick={() => { editProductInfo() }}>Edit Product</button>
+        }
+      }
+
     return (
         <div>
             { productState && reviewsArr &&
@@ -51,9 +57,7 @@ const ProductPage = () => {
                 {reviewsArr.map((review) => (
                     <div key={review.id}>{review.body}</div>
                 ))}
-                <div>
-                  <button onClick={editProductInfo}>Edit Product</button>
-                </div>
+                {userEditProduct()}
                 {userDeleteProduct()}
             </div>
             }
