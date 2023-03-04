@@ -10,6 +10,7 @@ import ProductsList from "./components/ProductsList";
 import ProductPage from './components/ProductPage'
 import EditProductForm from "./components/EditProductForm";
 import CreateReviewForm from "./components/CreateReviewForm";
+import Cart from "./components/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path='/products/:productId/reviews/create'>
             <CreateReviewForm />
+          </Route>
+          <Route exact path='/cart_items'>
+            <Cart />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>

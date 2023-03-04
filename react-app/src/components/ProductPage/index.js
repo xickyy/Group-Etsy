@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { oneProductThunk, deleteProductThunk } from "../../store/products";
 import { useParams, useHistory } from 'react-router-dom'
+import { addCartThunk } from "../../store/cart";
 
 const ProductPage = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    let { productId } = useParams()
+    let { productId} = useParams()
 
     useEffect(() => {
         dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
@@ -16,6 +17,8 @@ const ProductPage = () => {
 
     let productState = useSelector(state => state.products)
     let userState = useSelector(state => state.session)
+
+    let userId = userState.user.id
 
     let reviewsArr
     if(isLoaded){
@@ -45,6 +48,21 @@ const ProductPage = () => {
           return <button onClick={() => { editProductInfo() }}>Edit Product</button>
         }
       }
+    
+    const payload = { 
+      productId, 
+      userId
+     }
+
+    const handleAddToCart = () => {
+        console.log("####productId",productId)
+        dispatch(addCartThunk(payload))
+        history.push("/cart_items")
+    };
+
+    const addToCart = () => {
+          return <button onClick={() => { handleAddToCart() }}>Add to Cart</button>
+      }  
 
     return (
         <div>
@@ -54,6 +72,7 @@ const ProductPage = () => {
                 <img src={productState.imageURL} alt= ''/>
                 <div>{productState.price}</div>
                 <div>{productState.description}</div>
+                {addToCart()}
                 {reviewsArr.map((review) => (
                     <div key={review.id}>{review.body}</div>
                 ))}

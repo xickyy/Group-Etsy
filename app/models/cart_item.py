@@ -16,8 +16,6 @@ class CartItem(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            # 'userId': self.user_id,
-            # 'productId': self.product_id
             'user': self.user.to_dict_flat_user(),
             'product': self.product.to_dict()
         }
