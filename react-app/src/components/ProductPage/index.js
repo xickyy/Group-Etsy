@@ -66,15 +66,10 @@ const ProductPage = () => {
     }
   };
 
-  const refreshPage = () => {
-    window.location.reload(false);
-  }
-
   const userAddReview = () => {
     if (userState.user && userState.user.id !== productState.user.id) {
       return <OpenModalButton
       buttonText="Create a Review"
-      onClick={refreshPage}
       modalComponent={<CreateReviewForm productId={productId} />}
     />
     }

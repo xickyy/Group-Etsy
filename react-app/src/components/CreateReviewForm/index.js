@@ -3,13 +3,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { makeReviewThunk } from "../../store/reviews";
-import { useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 
 const CreateReviewForm = (productId) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { productId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
 
     const [body, setBody] = useState("");
@@ -37,7 +35,7 @@ const CreateReviewForm = (productId) => {
         );
       
         if (createdReview) {
-            history.push(`/products/${productId.productId}`)
+            window.location.reload()
             closeModal()
         }
     };
