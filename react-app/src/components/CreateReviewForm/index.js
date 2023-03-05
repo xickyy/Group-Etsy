@@ -1,10 +1,10 @@
 import "./CreateReviewForm.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { allReviewsByProductIdThunk } from "../../store/reviews";
 import { makeReviewThunk } from "../../store/reviews";
 import { useParams } from "react-router-dom";
+import { useModal } from "../../context/Modal";
 
 const CreateReviewForm = () => {
     const dispatch = useDispatch();
@@ -15,13 +15,10 @@ const CreateReviewForm = () => {
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
+    const { closeModal } = useModal();
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
-
-    useEffect(() => {
-        dispatch(allReviewsByProductIdThunk(productId));
-      }, [dispatch, productId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,12 +31,14 @@ const CreateReviewForm = () => {
         let createdReview = await dispatch(makeReviewThunk(productId, payload)).catch(
             async (res) => {
               const data = await res.json();
-              if (data && data.errors) setErrors(data.errors);
+              if (data && data.errors) setErrors(data.errors)
+              else closeModal()
             }
         );
       
         if (createdReview) {
-            history.push(`/products/${productId}`);
+            history.push(`/products/${productId}`)
+            closeModal()
         }
     };
 

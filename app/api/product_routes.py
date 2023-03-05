@@ -100,12 +100,14 @@ def add_reviews(product_id):
     This function creates a new review.
     """
     form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         review = Review(
             body = form.body.data,
             stars = form.stars.data,
-            userId = current_user.id,
-            productId = product_id
+            user_id = current_user.id,
+            product_id = product_id
         )
         db.session.add(review)
         db.session.commit()

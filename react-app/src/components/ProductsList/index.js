@@ -24,9 +24,9 @@ const ProductsList = (products) => {
             {
                 PRODUCTS && PRODUCTS.map((product) => (
                     <div key={product.id} product={product}>
-                        <div>{product.title}</div>
-                        <div>{product.description}</div>
-                        <Link to={`/products/${product.id}`} ><img src={product.imageURL} alt='img' /></Link>
+                            <div>{product.title}</div>
+                            <div>{product.description}</div>
+                            <Link to={`/products/${product.id}`} ><img src={product.imageURL} alt='img' /></Link>
                     </div>
                 ))
             }
