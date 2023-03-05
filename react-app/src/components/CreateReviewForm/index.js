@@ -6,10 +6,10 @@ import { makeReviewThunk } from "../../store/reviews";
 import { useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 
-const CreateReviewForm = () => {
+const CreateReviewForm = (productId) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { productId } = useParams();
+    // const { productId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
 
     const [body, setBody] = useState("");
@@ -28,7 +28,7 @@ const CreateReviewForm = () => {
           stars,
         };
 
-        let createdReview = await dispatch(makeReviewThunk(productId, payload)).catch(
+        let createdReview = await dispatch(makeReviewThunk(productId.productId, payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)
@@ -37,7 +37,7 @@ const CreateReviewForm = () => {
         );
       
         if (createdReview) {
-            history.push(`/products/${productId}`)
+            history.push(`/products/${productId.productId}`)
             closeModal()
         }
     };
