@@ -9,11 +9,8 @@ const EditReviewForm = (productId) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const sessionReviewsArr = useSelector((state) => Object.values(state.products.reviews));
-    console.log("####", sessionReviewsArr)
 
     const reviewToChange = sessionReviewsArr.find((review) => review.user.id === sessionUser.id);
-
-    console.log("REVIEW TO CHANGE", reviewToChange)
 
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
