@@ -9,7 +9,6 @@ import CreateProductForm from "./components/CreateProductForm";
 import ProductsList from "./components/ProductsList";
 import ProductPage from './components/ProductPage'
 import EditProductForm from "./components/EditProductForm";
-import CreateReviewForm from "./components/CreateReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +39,6 @@ function App() {
           </Route>
           <Route exact path='/products/:productId/edit'>
             <EditProductForm />
-          </Route>
-          <Route exact path='/products/:productId/reviews/create'>
-            <CreateReviewForm />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>

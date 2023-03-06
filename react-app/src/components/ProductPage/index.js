@@ -5,6 +5,7 @@ import { oneProductThunk, deleteProductThunk } from "../../store/products";
 import { useParams, useHistory } from "react-router-dom";
 import CreateReviewForm from "../CreateReviewForm";
 import OpenModalButton from "../OpenModalButton";
+import EditReviewForm from "../EditReviewForm";
 
 const ProductPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,8 +21,15 @@ const ProductPage = () => {
   let userState = useSelector((state) => state.session);
 
   let reviewsArr;
+  let reviewUserId;
   if (isLoaded) {
     reviewsArr = Object.values(productState.reviews);
+    reviewUserId = reviewsArr.filter((review) => {
+      if (userState.user.id === review.user.id) {
+        return true
+      }
+      return false
+    })
   }
 
   const editProductInfo = () => {
@@ -68,10 +76,23 @@ const ProductPage = () => {
 
   const userAddReview = () => {
     if (userState.user && userState.user.id !== productState.user.id) {
-      return <OpenModalButton
-      buttonText="Create a Review"
-      modalComponent={<CreateReviewForm productId={productId} />}
-    />
+      return (
+        <OpenModalButton
+          buttonText="Create a Review"
+          modalComponent={<CreateReviewForm productId={productId} />}
+        />
+      );
+    }
+  };
+
+  const userEditReview = () => {
+    if (userState.user && reviewUserId) {
+      return (
+        <OpenModalButton
+          buttonText="Edit Your Review"
+          modalComponent={<EditReviewForm productId={productId} />}
+        />
+      );
     }
   };
 
@@ -83,15 +104,17 @@ const ProductPage = () => {
           <img src={productState.imageURL} alt="" />
           <div>{productState.price}</div>
           <div>{productState.description}</div>
-          {reviewsArr && reviewsArr.map((review) => (
-            <div key={review.id}>
-              <div>{review.body}</div>
-              <div>Rating: {review.stars}/5</div>
-            </div>
-          ))}
+          {reviewsArr &&
+            reviewsArr.map((review) => (
+              <div key={review.id}>
+                <div>{review.body}</div>
+                <div>Rating: {review.stars}/5</div>
+                {userEditReview()}
+              </div>
+            ))}
           {userEditProduct()}
           {userDeleteProduct()}
-          
+
           {userAddReview()}
         </div>
       )}

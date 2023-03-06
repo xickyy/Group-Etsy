@@ -1,17 +1,33 @@
-import "./CreateReviewForm.css";
-import { useState } from "react";
+import "./EditReviewForm.css";
+
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { makeReviewThunk } from "../../store/reviews";
+import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
 
-const CreateReviewForm = (productId) => {
+const EditReviewForm = (productId) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const sessionReviewsArr = useSelector((state) => Object.values(state.products.reviews));
+    console.log("####", sessionReviewsArr)
+
+    const reviewToChange = sessionReviewsArr.find((review) => review.user.id === sessionUser.id);
+
+    console.log("REVIEW TO CHANGE", reviewToChange)
 
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
+
+    useEffect(() => {
+        if (reviewToChange) {
+          setBody(reviewToChange.body);
+          setStars(reviewToChange.stars);
+        }
+      }, [reviewToChange]);
+
+      // How do I get it so that the modal loads with the review you've clicked on's information?
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
@@ -21,10 +37,10 @@ const CreateReviewForm = (productId) => {
     
         const payload = {
           body,
-          stars,
+          stars
         };
 
-        let createdReview = await dispatch(makeReviewThunk(productId.productId, payload)).catch(
+        let editedReview = await dispatch(editReviewThunk(productId.productId, payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)
@@ -32,7 +48,7 @@ const CreateReviewForm = (productId) => {
             }
         );
       
-        if (createdReview) {
+        if (editedReview) {
             window.location.reload()
             closeModal()
         }
@@ -46,10 +62,10 @@ const CreateReviewForm = (productId) => {
           ))}
         </div>
         <div>
-          <p>Write a Review:</p>
+          <p>Edit Your Review:</p>
           <input
             type="text"
-            placeholder="Review here"
+            placeholder={"Review here"}
             value={body}
             onChange={updateBody}
           />
@@ -65,7 +81,7 @@ const CreateReviewForm = (productId) => {
           />
           <div>
             <button type="submit">
-              Create New Review
+              Edit Your Review
             </button>
           </div>
         </div>
@@ -73,4 +89,4 @@ const CreateReviewForm = (productId) => {
     ) : null;
 };
 
-export default CreateReviewForm;
+export default EditReviewForm;
