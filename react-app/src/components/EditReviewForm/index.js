@@ -4,13 +4,17 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
+import { useParams } from "react-router-dom";
 
-const EditReviewForm = (productId) => {
+const EditReviewForm = (review) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const sessionReviewsArr = useSelector((state) => Object.values(state.products.reviews));
+    // const sessionReviewsArr = useSelector((state) => Object.values(state.products.reviews));
+    const reviewId = review.review.id;
 
-    const reviewToChange = sessionReviewsArr.find((review) => review.user.id === sessionUser.id);
+    const { productId } = useParams();
+
+    // const reviewToChange = sessionReviewsArr.find((review) => review.user.id === sessionUser.id);
 
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
@@ -18,11 +22,11 @@ const EditReviewForm = (productId) => {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        if (reviewToChange) {
-          setBody(reviewToChange.body);
-          setStars(reviewToChange.stars);
+        if (review.review) {
+          setBody(review.review.body);
+          setStars(review.review.stars);
         }
-      }, [reviewToChange]);
+      }, [review.review]);
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
@@ -31,11 +35,12 @@ const EditReviewForm = (productId) => {
         e.preventDefault();
     
         const payload = {
+          reviewId,
           body,
           stars
         };
 
-        let editedReview = await dispatch(editReviewThunk(productId.productId, payload)).catch(
+        let editedReview = await dispatch(editReviewThunk(productId.productId, reviewId, payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)
