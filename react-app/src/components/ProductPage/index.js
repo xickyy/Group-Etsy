@@ -2,6 +2,7 @@ import "./ProductPage.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { oneProductThunk, deleteProductThunk } from "../../store/products";
+import { allReviewsByProductIdThunk, deleteReviewThunk } from "../../store/reviews";
 import { useParams, useHistory } from "react-router-dom";
 import CreateReviewForm from "../CreateReviewForm";
 import OpenModalButton from "../OpenModalButton";
@@ -11,24 +12,34 @@ const ProductPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
-  let { productId } = useParams();
+  const { productId } = useParams();
 
   useEffect(() => {
     dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
   }, [dispatch, productId]);
 
+  useEffect(() => {
+    dispatch(allReviewsByProductIdThunk(productId));
+  }, [dispatch, productId]);
+
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
+  let reviewState = useSelector((state) => state.reviews);
 
   let reviewsArr;
   let reviewUserId;
+  let reviewId;
   if (isLoaded) {
-    reviewsArr = Object.values(productState.reviews);
+    reviewsArr = Object.values(reviewState);
     reviewUserId = reviewsArr.filter((review) => {
       if (userState.user.id === review.user.id) {
         return true
       }
       return false
+    })
+
+    reviewId = reviewsArr.map((review) => {
+      return review.id
     })
   }
 
@@ -43,6 +54,16 @@ const ProductPage = () => {
     if (confirm) {
       dispatch(deleteProductThunk(productId));
       history.push("/products");
+    }
+  };
+
+  const reviewDeleter = () => {
+    const confirm = window.confirm(
+      `Are you sure you wish to delete your review?`
+    );
+    if (confirm) {
+      dispatch(deleteReviewThunk(reviewId)); // INCORRECT FIX LATER
+      history.push(`/products/${productId}`);
     }
   };
 
@@ -96,6 +117,20 @@ const ProductPage = () => {
     }
   };
 
+  const userDeleteReview = () => {
+    if (userState.user && reviewUserId) {
+      return (
+        <button
+          onClick={() => {
+            reviewDeleter();
+          }}
+        >
+          Delete Review
+        </button>
+      );
+    }
+  };
+
   return (
     <div>
       {productState && reviewsArr && (
@@ -110,6 +145,7 @@ const ProductPage = () => {
                 <div>{review.body}</div>
                 <div>Rating: {review.stars}/5</div>
                 {userEditReview()}
+                {userDeleteReview()}
               </div>
             ))}
           {userEditProduct()}

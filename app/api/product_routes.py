@@ -113,7 +113,7 @@ def add_reviews(product_id):
         db.session.commit()
         return review.to_dict()
 
-@product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["PUT"])
+@product_routes.route('/reviews/<int:review_id>', methods=["PUT"])
 def edits_a_review(review_id):
     """
     Edits a review by ID.
@@ -131,8 +131,8 @@ def edits_a_review(review_id):
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-@product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["DELETE"])
-def deletes_a_reivew(review_id):
+@product_routes.route('/reviews/<int:review_id>', methods=["DELETE"])
+def deletes_a_review(review_id):
     """
     Deletes a review by ID.
     """

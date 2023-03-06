@@ -27,8 +27,6 @@ const EditReviewForm = (productId) => {
         }
       }, [reviewToChange]);
 
-      // How do I get it so that the modal loads with the review you've clicked on's information?
-
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
 
@@ -70,7 +68,7 @@ const EditReviewForm = (productId) => {
             onChange={updateBody}
           />
 
-          <p>How would you rate your experience?</p>
+          <p>How would you rate this product?</p>
           <input
             type="number"
             placeholder="Stars here"
