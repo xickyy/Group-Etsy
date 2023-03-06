@@ -35,8 +35,8 @@ const ReviewCard = ({ review }) => {
         `Are you sure you wish to delete your review?`
       );
       if (confirm) {
-        dispatch(deleteReviewThunk(review));
-        history.push(`/products/${productId}`);
+        dispatch(deleteReviewThunk(productId, review));
+        window.location.reload()
       }
     };
   

@@ -67,8 +67,8 @@ export const makeReviewThunk = (productId, review) => async (dispatch) => {
     }
 };
 
-export const editReviewThunk = (review) => async (dispatch) => {
-  const res = await fetch(`/api/reviews/${review.id}`, {
+export const editReviewThunk = (productId, review) => async (dispatch) => {
+  const res = await fetch(`/api/products/${productId}/reviews/${review.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(review),
@@ -81,8 +81,8 @@ export const editReviewThunk = (review) => async (dispatch) => {
   }
 };
 
-export const deleteReviewThunk = (review) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${review.id}`, {
+export const deleteReviewThunk = (productId, review) => async (dispatch) => {
+  const response = await fetch(`/api/products/${productId}/reviews/${review.id}`, {
     method: "DELETE",
   });
 
