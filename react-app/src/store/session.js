@@ -94,6 +94,24 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	}
 };
 
+export const demoLogin = () => async (dispatch) => {
+  const email = "demo@aa.io";
+  const password = "password";
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data));
+  return response;
+};
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
