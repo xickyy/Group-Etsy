@@ -1,4 +1,4 @@
-
+import "./ReviewCard.css";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
