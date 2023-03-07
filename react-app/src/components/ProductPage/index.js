@@ -74,7 +74,7 @@ const ProductPage = () => {
   };
 
   const userAddReview = () => {
-    if (userState.user && userState.user.id !== productState.user.id) {
+    if (userState.user && (userState.user.id !== productState.user.id) && (Object.values(userState.user.reviews).length === 0)) {
       return (
         <OpenModalButton
           buttonText="Create a Review"
