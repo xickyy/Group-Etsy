@@ -100,13 +100,43 @@ def add_reviews(product_id):
     This function creates a new review.
     """
     form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         review = Review(
             body = form.body.data,
             stars = form.stars.data,
-            userId = current_user.id,
-            productId = product_id
+            user_id = current_user.id,
+            product_id = product_id
         )
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
+
+@product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["PUT"])
+def edits_a_review(product_id, review_id):
+    """
+    Edits a review by ID.
+    """
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        review = Review.query.get(review_id)
+       
+        for key, value in data.items():
+            setattr(review, key, value)
+        db.session.commit()
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["DELETE"])
+def deletes_a_review(product_id, review_id):
+    """
+    Deletes a review by ID.
+    """
+    review = Review.query.get(review_id)
+    db.session.delete(review)
+    db.session.commit()
+    return {'message': 'Your review has been deleted!'}

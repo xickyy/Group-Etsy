@@ -43,11 +43,11 @@ const SearchBar = ({ placeholder, data }) => {
       <div className='searchInputs'>
         <input type='text' placeholder={placeholder} value={search} onChange={handleFilter} />
         <div className='searchIcon'>
-          {search.length === 0 ? <i class="fa-solid fa-magnifying-glass"></i> : <i class="fa-solid fa-xmark" id='clearBtn' onClick={clearSearch}></i>}
+          {search.length === 0 ? <i className="fa-solid fa-magnifying-glass"></i> : <i class="fa-solid fa-xmark" id='clearBtn' onClick={clearSearch}></i>}
 
         </div>
       </div>
-      {filterData.length != 0 && (
+      {filterData.length !== 0 && (
         <div className='dataResult'>
           {filterData.slice(0, 15).map((value, key) => {
             return <a className='dataItem' key={value.id} href={`/products/${value.id}`}>

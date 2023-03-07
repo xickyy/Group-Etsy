@@ -1,17 +1,25 @@
-import "./CreateReviewForm.css";
-import { useState } from "react";
+import "./EditReviewForm.css";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { makeReviewThunk } from "../../store/reviews";
+import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
 
-const CreateReviewForm = (productId) => {
+const EditReviewForm = ({ review, productId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const reviewId = review.id;
 
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
+
+    useEffect(() => {
+        if (review) {
+          setBody(review.body);
+          setStars(review.stars);
+        }
+      }, [review.review]);
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
@@ -20,11 +28,13 @@ const CreateReviewForm = (productId) => {
         e.preventDefault();
     
         const payload = {
+          productId,
+          reviewId,
           body,
-          stars,
+          stars
         };
 
-        let createdReview = await dispatch(makeReviewThunk(productId.productId, payload)).catch(
+        let editedReview = await dispatch(editReviewThunk(payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)
@@ -32,7 +42,7 @@ const CreateReviewForm = (productId) => {
             }
         );
       
-        if (createdReview) {
+        if (editedReview) {
             window.location.reload()
             closeModal()
         }
@@ -46,15 +56,15 @@ const CreateReviewForm = (productId) => {
           ))}
         </div>
         <div>
-          <p>Write a Review:</p>
+          <p>Edit Your Review:</p>
           <input
             type="text"
-            placeholder="Review here"
+            placeholder={"Review here"}
             value={body}
             onChange={updateBody}
           />
 
-          <p>How would you rate your experience?</p>
+          <p>How would you rate this product?</p>
           <input
             type="number"
             placeholder="Stars here"
@@ -65,7 +75,7 @@ const CreateReviewForm = (productId) => {
           />
           <div>
             <button type="submit">
-              Create New Review
+              Edit Your Review
             </button>
           </div>
         </div>
@@ -73,4 +83,4 @@ const CreateReviewForm = (productId) => {
     ) : null;
 };
 
-export default CreateReviewForm;
+export default EditReviewForm;

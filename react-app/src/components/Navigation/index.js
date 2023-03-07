@@ -9,7 +9,10 @@ import Cart from '../Cart'
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
-	return (
+
+	let sessionLinks;
+	if (sessionUser && sessionUser.id) {
+		sessionLinks = (
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
 					<NavLink id='link' exact to="/">Home</NavLink>
@@ -24,7 +27,46 @@ function Navigation({ isLoaded }) {
 					</li>
 				)}
 			</ul>
-	);
+		)
+	} else {
+		sessionLinks = (
+			<ul className='allNavLinks'>
+				<li className='navLinks'>
+					<NavLink id='link' exact to="/">Home</NavLink>
+					<NavLink id='link' exact to="/products">Products</NavLink>
+					<SearchBar id='link' placeholder='Search for a product' />
+				</li>
+				{isLoaded && (
+					<li className='navLinks'>
+						<ProfileButton id='profileLink' user={sessionUser} />
+					</li>
+				)}
+			</ul>
+		)
+	}
+
+
+	return (
+		<div>
+			{isLoaded && sessionLinks}
+		</div>
+	)
+
+	// return (
+	// 		<ul className='allNavLinks'>
+	// 			<li className='navLinks'>
+	// 				<NavLink id='link' exact to="/">Home</NavLink>
+	// 				<NavLink id='link' exact to="/products">Products</NavLink>
+	// 				<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
+	// 				<SearchBar id='link' placeholder='Search for a product' />
+	// 			</li>
+	// 			{isLoaded && (
+	// 				<li className='navLinks'>
+	// 					<ProfileButton id='profileLink' user={sessionUser} />
+	// 				</li>
+	// 			)}
+	// 		</ul>
+	// );
 }
 
 export default Navigation;

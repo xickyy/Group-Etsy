@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import * as sessionActions from '../../store/session';
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -17,12 +18,24 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
+  };
+
+  const demoSubmit = (e) => {
+    e.preventDefault();
+    closeModal()
+    return dispatch(sessionActions.demoLogin());
   };
 
   return (
     <>
+      <form onSubmit={demoSubmit}>
+        <button>
+          Demo Log In
+        </button>
+        Click here to test the page features without signing up
+      </form>
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
