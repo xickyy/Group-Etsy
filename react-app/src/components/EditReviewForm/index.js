@@ -1,10 +1,9 @@
-import "./EditReviewForm.css";
+
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
-// import { useParams } from "react-router-dom";
 
 const EditReviewForm = ({ review, productId }) => {
     const dispatch = useDispatch();
