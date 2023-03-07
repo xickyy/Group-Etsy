@@ -5,9 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import ProductPage from "./components/ProductPage";
 import CreateProductForm from "./components/CreateProductForm";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ProductsList from "./components/ProductsList";
+import ProductPage from './components/ProductPage'
+import EditProductForm from "./components/EditProductForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,10 +29,16 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/products">
-            <ProductPage />
+            <ProductsList />
           </Route>
           <Route exact path="/products/create">
             <CreateProductForm />
+          </Route>
+          <Route exact path='/products/:productId'>
+            <ProductPage />
+          </Route>
+          <Route exact path='/products/:productId/edit'>
+            <EditProductForm />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>

@@ -49,8 +49,8 @@ const CreateProductForm = () => {
 
   return sessionUser.id ? (
     <section>
-        <form className="create-product-form" onSubmit={handleSubmit}>
-            <div className="errors">
+        <form onSubmit={handleSubmit}>
+            <div>
                 {errors.map((error, index) => (
                     <li key={index}>Error: {error}</li>
                 ))}
@@ -87,7 +87,7 @@ const CreateProductForm = () => {
             />
 
             <div>
-                <button type="submit-button">Create New Product</button>
+                <button type="submit">Create New Product</button>
             </div>
         </form>
     </section>

@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'imageURL': self.image_URL,
             'email': self.email,
-            'username': self.username
+            'username': self.username,
             'products': { product.id: product.to_dict() for product in self.products },
             'reviews': { review.id: review.to_dict() for review in self.reviews },
             'cartItems': { cart_item.id: cart_item.to_dict() for cart_item in self.cart_items }
