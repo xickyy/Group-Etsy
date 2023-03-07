@@ -1,5 +1,6 @@
 const ADD_CART = "carts/addCart"
 const GET_CART = "carts/getCartItems"
+const DELETE_CART = "carts/deleteCartItems";
 
 
 const addItemToCart = (productId,userId) => {
@@ -17,6 +18,12 @@ const getCartItems = (cartItems) => {
     };
   };
   
+const deleteCartItems = (cartItem) => {
+    return {
+      type: DELETE_CART,
+      cartItem,
+    };
+  };
 
 export const addCartThunk = ( ids ) => async (dispatch) => {
     const res = await fetch("/api/cart_items/", {
@@ -39,6 +46,17 @@ export const allCartItemsThunk = () => async (dispatch) => {
     return res;
 };
 
+export const deleteCartItemsThunk = (id) => async (dispatch) => {
+    const res = await fetch(`/api/cart_items/${id}`, {
+      method: "DELETE",
+    });
+  
+    if (res.ok) {
+      dispatch(deleteCartItems(id));
+    }
+  };
+  
+
 const initialState = {};
 
 const cartReducer = (state = initialState, action) => {
@@ -52,6 +70,9 @@ const cartReducer = (state = initialState, action) => {
             newState[cartItem.id] = cartItem;
         });
         return newState;
+    case DELETE_CART:
+      delete newState[action.cartItem]
+      return newState;
     default:
       return newState;
   }

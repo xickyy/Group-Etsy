@@ -1,6 +1,6 @@
 import './Cart.css'
 import React, { useState, useEffect } from 'react'
-import { allCartItemsThunk } from '../../store/cart.js'
+import { allCartItemsThunk, deleteCartItemsThunk } from '../../store/cart.js'
 import { useSelector, useDispatch } from "react-redux";
 
 const Cart = () => {
@@ -19,12 +19,16 @@ const Cart = () => {
         cartItems = Object.values(cartState)
     }
 
+    const userDeleteCartItems = (id) => {
+          return <button onClick={() => { dispatch(deleteCartItemsThunk(id)) }}>Delete</button>
+      }
+
     return (
         <div>
         {
             cartItems && cartItems.map((product) => (
-                <div key={product.id} product={product}>
-                    <div>{product.product}</div>
+                <div key={product.id}>
+                    <div>{product.product.title} {userDeleteCartItems(product.id)}</div>
                 </div>
             ))
         }
