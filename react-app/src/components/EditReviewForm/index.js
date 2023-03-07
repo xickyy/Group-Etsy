@@ -4,17 +4,12 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
-const EditReviewForm = (review) => {
+const EditReviewForm = ({ review, productId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    // const sessionReviewsArr = useSelector((state) => Object.values(state.products.reviews));
-    const reviewId = review.review.id;
-
-    const { productId } = useParams();
-
-    // const reviewToChange = sessionReviewsArr.find((review) => review.user.id === sessionUser.id);
+    const reviewId = review.id;
 
     const [body, setBody] = useState("");
     const [stars, setStars] = useState(0);
@@ -22,9 +17,9 @@ const EditReviewForm = (review) => {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        if (review.review) {
-          setBody(review.review.body);
-          setStars(review.review.stars);
+        if (review) {
+          setBody(review.body);
+          setStars(review.stars);
         }
       }, [review.review]);
 
@@ -35,12 +30,13 @@ const EditReviewForm = (review) => {
         e.preventDefault();
     
         const payload = {
+          productId,
           reviewId,
           body,
           stars
         };
 
-        let editedReview = await dispatch(editReviewThunk(productId.productId, reviewId, payload)).catch(
+        let editedReview = await dispatch(editReviewThunk(payload)).catch(
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)

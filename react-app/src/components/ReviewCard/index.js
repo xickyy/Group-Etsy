@@ -23,7 +23,7 @@ const ReviewCard = ({ review }) => {
         return (
           <OpenModalButton
             buttonText="Edit Your Review"
-            modalComponent={<EditReviewForm review={review} />}
+            modalComponent={<EditReviewForm review={review} productId={productId} />}
           />
         );
       }

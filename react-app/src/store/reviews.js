@@ -67,8 +67,8 @@ export const makeReviewThunk = (productId, review) => async (dispatch) => {
     }
 };
 
-export const editReviewThunk = (productId, review) => async (dispatch) => {
-  const res = await fetch(`/api/products/${productId}/reviews/${review.id}`, {
+export const editReviewThunk = (review) => async (dispatch) => {
+  const res = await fetch(`/api/products/${review.productId}/reviews/${review.reviewId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(review),
