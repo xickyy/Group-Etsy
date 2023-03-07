@@ -12,18 +12,23 @@ const Cart = () => {
         dispatch(allCartItemsThunk()).then(()=> setIsLoaded(true))
     },[dispatch])
 
-    let cartState = useSelector(state => state.products) 
-    // console.log('products######',cartState)
+    let cartState = useSelector(state => state.cart) 
 
-    // let cartState2 = useSelector(state => state.cartItems)
-    // console.log('cartItems######',cartState2)
-
+    let cartItems
+    if(isLoaded){
+        cartItems = Object.values(cartState)
+    }
 
     return (
-        <div className = 'cart'>
-            <h2>Cart</h2>
-            {cartState.title}
-        </div>
+        <div>
+        {
+            cartItems && cartItems.map((product) => (
+                <div key={product.id} product={product}>
+                    <div>{product.product}</div>
+                </div>
+            ))
+        }
+    </div>
 )
 
 
