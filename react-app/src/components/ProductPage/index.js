@@ -16,31 +16,32 @@ const ProductPage = () => {
   const { productId } = useParams();
 
   useEffect(() => {
-    dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
-  }, [dispatch, productId]);
-
-  useEffect(() => {
-    dispatch(allReviewsByProductIdThunk(productId));
+    dispatch(oneProductThunk(productId)).then(dispatch(allReviewsByProductIdThunk(productId))).then(() => setIsLoaded(true));
   }, [dispatch, productId]);
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
-  let reviewState = useSelector((state) => state.reviews);
 
   let userId
     if (userState.user) {
       userId = userState.user.id
-    }
-
-    let reviewsArr
-    if(isLoaded){
-        reviewsArr = Object.values(productState.reviews)
     }
   
     const payload = { 
       productId, 
       userId
      }
+  let reviewStateArr;
+  let individualRevArr;
+  
+  if (isLoaded) {
+    reviewStateArr = Object.values(productState.reviews);
+    individualRevArr = reviewStateArr.filter((review) => {
+      if (review.user.id === userState.user.id) {
+        return Object.values(review)
+      }
+    })
+  }
 
   const editProductInfo = () => {
     history.push(`/products/${productId}/edit`);
@@ -96,7 +97,7 @@ const ProductPage = () => {
       }
     
   const userAddReview = () => {
-    if (userState.user && userState.user.id !== productState.user.id) {
+    if (userState.user && (userState.user.id !== productState.user.id) && (individualRevArr.length === 0)) {
       return (
         <OpenModalButton
           buttonText="Create a Review"
@@ -106,18 +107,17 @@ const ProductPage = () => {
     }
   };
 
-
   return (
     <div>
-      {productState && reviewsArr && (
+      {productState && reviewStateArr && (
         <div>
           <div>{productState.title}</div>
           <img src={productState.imageURL} alt="" />
           <div>{productState.price}</div>
           <div>{productState.description}</div>
           {userAddCart()}
-          {reviewsArr.length > 0 &&
-            reviewsArr.map((review) => {
+          {reviewStateArr.length > 0 &&
+            reviewStateArr.map((review) => {
               return <ReviewCard key={review.id} review={review} />;
             })}
           {userEditProduct()}
