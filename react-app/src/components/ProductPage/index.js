@@ -16,31 +16,35 @@ const ProductPage = () => {
   const { productId } = useParams();
 
   useEffect(() => {
-    dispatch(oneProductThunk(productId)).then(dispatch(allReviewsByProductIdThunk(productId))).then(() => setIsLoaded(true));
+    dispatch(oneProductThunk(productId))
+      .then(dispatch(allReviewsByProductIdThunk(productId)))
+      .then(() => setIsLoaded(true));
   }, [dispatch, productId]);
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
 
-  let userId
-    if (userState.user) {
-      userId = userState.user.id
-    }
-  
-    const payload = { 
-      productId, 
-      userId
-     }
+  let userId;
+  if (userState.user) {
+    userId = userState.user.id;
+  }
+
+  const payload = {
+    productId,
+    userId,
+  };
+
+  let reviewState = useSelector((state) => state.reviews);
   let reviewStateArr;
   let individualRevArr;
-  
+
   if (isLoaded) {
-    reviewStateArr = Object.values(productState.reviews);
+    reviewStateArr = Object.values(reviewState);
     individualRevArr = reviewStateArr.filter((review) => {
       if (review.user.id === userState.user.id) {
-        return Object.values(review)
+        return Object.values(review);
       }
-    })
+    });
   }
 
   const editProductInfo = () => {
@@ -85,19 +89,31 @@ const ProductPage = () => {
     }
   };
 
-    const handleAddToCart = () => {
-        dispatch(addCartThunk(payload))
-        history.push("/cart_items")
-    };
-    
-      const userAddCart = () => {
-        if (userState.user) {
-          return <button onClick={() => { handleAddToCart() }}>Add to Cart</button>
-        }
-      }
-    
+  const handleAddToCart = () => {
+    dispatch(addCartThunk(payload));
+    history.push("/cart_items");
+  };
+
+  const userAddCart = () => {
+    if (userState.user) {
+      return (
+        <button
+          onClick={() => {
+            handleAddToCart();
+          }}
+        >
+          Add to Cart
+        </button>
+      );
+    }
+  };
+
   const userAddReview = () => {
-    if (userState.user && (userState.user.id !== productState.user.id) && (individualRevArr.length === 0)) {
+    if (
+      userState.user &&
+      userState.user.id !== productState.user.id &&
+      individualRevArr.length === 0
+    ) {
       return (
         <OpenModalButton
           buttonText="Create a Review"
@@ -123,7 +139,7 @@ const ProductPage = () => {
           {userEditProduct()}
           {userDeleteProduct()}
 
-          {userAddReview()} 
+          {userAddReview()}
         </div>
       )}
     </div>

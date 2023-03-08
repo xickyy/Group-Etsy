@@ -36,7 +36,6 @@ const ReviewCard = ({ review }) => {
       );
       if (confirm) {
         dispatch(deleteReviewThunk(productId, review));
-        window.location.reload()
       }
     };
   

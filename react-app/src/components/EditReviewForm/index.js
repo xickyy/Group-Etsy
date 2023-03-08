@@ -43,7 +43,6 @@ const EditReviewForm = ({ review, productId }) => {
         );
       
         if (editedReview) {
-            window.location.reload()
             closeModal()
         }
     };

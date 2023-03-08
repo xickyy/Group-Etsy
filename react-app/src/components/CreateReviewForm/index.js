@@ -33,7 +33,6 @@ const CreateReviewForm = (productId) => {
         );
       
         if (createdReview) {
-            window.location.reload()
             closeModal()
         }
     };
