@@ -3,11 +3,10 @@ const GET_CART = "carts/getCartItems"
 const DELETE_CART = "carts/deleteCartItems";
 
 
-const addItemToCart = (productId,userId) => {
+const addItemToCart = (item) => {
     return {
         type: ADD_CART,
-        productId,
-        userId
+        item
     };
 };
 
@@ -63,7 +62,7 @@ const cartReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case ADD_CART:
-      newState[action.productId] = action.productId;
+      newState[action.item.id] = action.item;
       return newState;
     case GET_CART:
         action.cartItems.cartItems.forEach((cartItem) => {
