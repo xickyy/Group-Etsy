@@ -20,11 +20,12 @@ const ProductPage = () => {
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
+  let reviewState = useSelector((state) => state.reviews);
   let reviewStateArr;
   let individualRevArr;
   
   if (isLoaded) {
-    reviewStateArr = Object.values(productState.reviews);
+    reviewStateArr = Object.values(reviewState);
     individualRevArr = reviewStateArr.filter((review) => {
       if (review.user.id === userState.user.id) {
         return Object.values(review)
