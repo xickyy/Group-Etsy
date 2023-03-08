@@ -1,25 +1,18 @@
 import "./ReviewCard.css";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
-import { useEffect } from "react";
 import OpenModalButton from "../OpenModalButton";
 import EditReviewForm from "../EditReviewForm";
-import { allReviewsByProductIdThunk } from "../../store/reviews";
 
 const ReviewCard = ({ review }) => {
-    const history = useHistory();
     const { productId } = useParams();
     const userState = useSelector((state) => state.session);
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(allReviewsByProductIdThunk(productId));
-      }, [dispatch, productId]);
   
     const editReviewInfo = () => {
-      if (userState.user && review) {
+      if (userState.user && review.id && (userState.user.id === review.user.id)) {
         return (
           <OpenModalButton
             buttonText="Edit Your Review"
@@ -27,7 +20,6 @@ const ReviewCard = ({ review }) => {
           />
         );
       }
-      history.push(`/products/${productId}`);
     };
 
     const reviewDeleter = () => {
@@ -40,7 +32,7 @@ const ReviewCard = ({ review }) => {
     };
   
     const deleteReview = (e) => {
-      if (userState.user && review) {
+      if (userState.user && review && (userState.user.id === review.user.id)) {
         return (
           <button
             onClick={() => {

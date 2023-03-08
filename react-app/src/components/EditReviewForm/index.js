@@ -9,17 +9,17 @@ const EditReviewForm = ({ review, productId }) => {
     const sessionUser = useSelector((state) => state.session.user);
     const reviewId = review.id;
 
-    const [body, setBody] = useState("");
-    const [stars, setStars] = useState(0);
+    const [body, setBody] = useState(review.body);
+    const [stars, setStars] = useState(review.stars);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
 
-    useEffect(() => {
-        if (review) {
-          setBody(review.body);
-          setStars(review.stars);
-        }
-      }, [review.review]);
+    // useEffect(() => {
+    //     if (review) {
+    //       setBody(review.body);
+    //       setStars(review.stars);
+    //     }
+    //   }, [review]);
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);
