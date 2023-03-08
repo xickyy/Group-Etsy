@@ -49,13 +49,12 @@ const ReviewCard = ({ review }) => {
     return (
       <div>
         <div>
+          <h3>Reviews</h3>
           <div>{review.user.firstName}- {review.body}</div>
           <u>Rated</u>: {review.stars}/5 Stars
         </div>
         <div>
             {editReviewInfo()}
-        </div>
-        <div>
             {deleteReview()}
         </div>
       </div>
