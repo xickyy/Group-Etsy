@@ -12,7 +12,7 @@ const ReviewCard = ({ review }) => {
     const dispatch = useDispatch();
   
     const editReviewInfo = () => {
-      if (userState.user && review.id && (userState.user.id === review.user.id)) {
+      if (userState.user && review && (userState.user.id === review.user.id)) {
         return (
           <OpenModalButton
             buttonText="Edit Your Review"

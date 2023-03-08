@@ -1,5 +1,5 @@
 import "./EditReviewForm.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
@@ -13,13 +13,6 @@ const EditReviewForm = ({ review, productId }) => {
     const [stars, setStars] = useState(review.stars);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
-
-    // useEffect(() => {
-    //     if (review) {
-    //       setBody(review.body);
-    //       setStars(review.stars);
-    //     }
-    //   }, [review]);
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);

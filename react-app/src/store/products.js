@@ -106,8 +106,8 @@ const productReducer = (state = initialState, action) => {
       newState[action.product.id] = action.product;
       return newState;
     case GET_ONE_PRODUCT:
-      newState = {};
-      newState = action.product;
+      // newState = {};
+      newState[action.product.id] = action.product;
       return newState;
     case EDIT_PRODUCT:
       newState[action.product.id] = action.product;

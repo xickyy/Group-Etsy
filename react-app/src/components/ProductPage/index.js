@@ -8,6 +8,7 @@ import { useParams, useHistory } from "react-router-dom";
 import CreateReviewForm from "../CreateReviewForm";
 import OpenModalButton from "../OpenModalButton";
 import ReviewCard from "../ReviewCard";
+import EditProductForm from "../EditProductForm";
 
 const ProductPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,7 +49,15 @@ const ProductPage = () => {
   }
 
   const editProductInfo = () => {
-    history.push(`/products/${productId}/edit`);
+    if (userState.user && (userState.user.id === productState[productId].user.id)) {
+      console.log("PRODUCT", productState[productId])
+      return (
+        <OpenModalButton
+          buttonText="Edit Your Product"
+          modalComponent={<EditProductForm product={productState[productId]} />}
+        />
+      );
+    }
   };
 
   const productDeleter = () => {
@@ -62,7 +71,7 @@ const ProductPage = () => {
   };
 
   const userDeleteProduct = () => {
-    if (userState.user && userState.user.id === productState.user.id) {
+    if (userState.user && (userState.user.id === productState[productId].user.id)) {
       return (
         <button
           onClick={() => {
@@ -75,19 +84,19 @@ const ProductPage = () => {
     }
   };
 
-  const userEditProduct = () => {
-    if (userState.user && userState.user.id === productState.user.id) {
-      return (
-        <button
-          onClick={() => {
-            editProductInfo();
-          }}
-        >
-          Edit Product
-        </button>
-      );
-    }
-  };
+  // const userEditProduct = () => {
+  //   if (userState.user && userState.user.id === productState.user.id) {
+  //     return (
+  //       <button
+  //         onClick={() => {
+  //           editProductInfo();
+  //         }}
+  //       >
+  //         Edit Product
+  //       </button>
+  //     );
+  //   }
+  // };
 
   const handleAddToCart = () => {
     dispatch(addCartThunk(payload));
@@ -111,7 +120,7 @@ const ProductPage = () => {
   const userAddReview = () => {
     if (
       userState.user &&
-      userState.user.id !== productState.user.id &&
+      userState.user.id !== productState[productId].user.id &&
       individualRevArr.length === 0
     ) {
       return (
@@ -125,18 +134,18 @@ const ProductPage = () => {
 
   return (
     <div>
-      {productState && reviewStateArr && (
+      {productState[productId] && reviewStateArr && (
         <div>
-          <div>{productState.title}</div>
-          <img src={productState.imageURL} alt="" />
-          <div>Price- ${productState.price}</div>
-          <div>Description- {productState.description}</div>
+          <div>{productState[productId].title}</div>
+          <img src={productState[productId].imageURL} alt="" />
+          <div>Price: ${productState[productId].price}</div>
+          <div>Description: {productState[productId].description}</div>
           {userAddCart()}
           {reviewStateArr.length > 0 &&
             reviewStateArr.map((review) => {
               return <ReviewCard key={review.id} review={review} />;
             })}
-          {userEditProduct()}
+          {editProductInfo()}
           {userDeleteProduct()}
 
           {userAddReview()}
