@@ -129,8 +129,8 @@ const ProductPage = () => {
         <div>
           <div>{productState.title}</div>
           <img src={productState.imageURL} alt="" />
-          <div>{productState.price}</div>
-          <div>{productState.description}</div>
+          <div>Price- ${productState.price}</div>
+          <div>Description- {productState.description}</div>
           {userAddCart()}
           {reviewStateArr.length > 0 &&
             reviewStateArr.map((review) => {
