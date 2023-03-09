@@ -7,8 +7,6 @@ import SearchBar from '../SearchBar';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-	const userState = useSelector((state) => state.session);
-
 
 	let sessionLinks;
 	if (sessionUser && sessionUser.id) {
@@ -19,7 +17,6 @@ function Navigation({ isLoaded }) {
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 					<NavLink id = 'link' exact to="/cart_items">Cart</NavLink>
-					<h2>{`Welcome back, ${userState.user.firstName} ${userState.user.lastName}`}</h2>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>
