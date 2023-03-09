@@ -20,10 +20,10 @@ const ProductsList = (products) => {
   }
 
   return (
-    <div>
+    <div className="products-list">
       {sessionUser && sessionUser.id ? (
-        <h2>{`Welcome back, ${sessionUser.firstName}`}</h2>
-      ) : <h2>Incredible style and decor, plus one-of-a-kind gifts right this way!</h2>}
+        <h2 className="title">{`Welcome back, ${sessionUser.firstName}!`}</h2>
+      ) : <h2 className="title">Incredible style and decor, plus one-of-a-kind gifts right this way!</h2>}
 
       {PRODUCTS &&
         PRODUCTS.map((product) => (

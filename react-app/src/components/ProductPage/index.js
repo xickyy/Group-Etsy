@@ -24,6 +24,7 @@ const ProductPage = () => {
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
+  console.log("####",productState)
 
   let userId;
   if (userState.user) {
@@ -52,7 +53,6 @@ const ProductPage = () => {
 
   const editProductInfo = () => {
     if (userState.user && (userState.user.id === productState[productId].user.id)) {
-      console.log("PRODUCT", productState[productId])
       return (
         <OpenModalButton
           buttonText="Edit Your Product"
@@ -64,7 +64,7 @@ const ProductPage = () => {
 
   const productDeleter = () => {
     const confirm = window.confirm(
-      `Are you sure you wish to delete the product "${productState.title}"`
+      `Are you sure you wish to delete the product "${productState[productId].title}"?`
     );
     if (confirm) {
       dispatch(deleteProductThunk(productId));
