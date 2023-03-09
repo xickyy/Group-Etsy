@@ -37,6 +37,11 @@ function ProfileButton({ user }) {
     history.push('/')
   };
 
+  const handleUserDetails = (e) => {
+    e.preventDefault();
+    history.push('/user_details')
+  };
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -53,6 +58,7 @@ function ProfileButton({ user }) {
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
+            <li><button onClick={handleUserDetails}>User Details</button></li>
           </>
         ) : (
           <>

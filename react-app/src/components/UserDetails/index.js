@@ -31,6 +31,7 @@ const UserDetail = ({ placeholder, data }) => {
             return product;
         }
     });
+
    
 return (
     <div>

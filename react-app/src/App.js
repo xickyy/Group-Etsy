@@ -10,6 +10,7 @@ import ProductsList from "./components/ProductsList";
 import ProductPage from './components/ProductPage'
 import CreateReviewForm from "./components/CreateReviewForm";
 import Cart from "./components/Cart";
+import UserDetail from "./components/UserDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path='/cart_items'>
             <Cart />
+          </Route>
+          <Route exact path='/user_details'>
+            <UserDetail />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>

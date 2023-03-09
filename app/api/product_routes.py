@@ -140,3 +140,11 @@ def deletes_a_review(product_id, review_id):
     db.session.delete(review)
     db.session.commit()
     return {'message': 'Your review has been deleted!'}
+
+@product_routes.route('/reviews/current_user', methods=["GET"])
+def get_reviews_by_user():
+    """
+    Get reviews from current user
+    """
+    reviews = Review.query.filter(Review.user_id == current_user.id).all()
+    return {'reviews': [review.to_dict() for review in reviews]}
