@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useModal } from "../../context/Modal";
+import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const { closeModal } = useModal();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -34,7 +37,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    history.push('/')
+    history.push("/");
   };
 
   const handleUserDetails = (e) => {
@@ -44,6 +47,12 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
+
+  const demoSubmit = (e) => {
+    e.preventDefault();
+    closeModal()
+    return dispatch(sessionActions.demoLogin());
+  };
 
   return (
     <>
@@ -73,6 +82,10 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+
+            <form onSubmit={demoSubmit}>
+              <button>Demo Log In</button>
+            </form>
           </>
         )}
       </ul>

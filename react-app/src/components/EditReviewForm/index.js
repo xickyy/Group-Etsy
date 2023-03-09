@@ -31,12 +31,12 @@ const EditReviewForm = ({ review, productId }) => {
             async (res) => {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors)
-              else closeModal()
+              else closeModal();
             }
         );
       
         if (editedReview) {
-            closeModal()
+            closeModal();
         }
     };
 

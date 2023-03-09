@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allProductsThunk } from "../../store/products";
 import { makeProductThunk } from "../../store/products";
-import { useModal } from "../../context/Modal";
+import { useHistory } from "react-router-dom";
 
 const CreateProductForm = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [imageURL, setImageURL] = useState("");
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -39,12 +39,11 @@ const CreateProductForm = () => {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-        else closeModal();
       }
     );
 
     if (createdProduct) {
-      closeModal();
+      history.push(`/products/${createdProduct.id}`);
     }
   };
 

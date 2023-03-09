@@ -10,8 +10,8 @@ import { useModal } from "../../context/Modal";
 const EditProductForm = ({ product }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const { productId } = useParams();
-
+  const productId = product.id;
+ 
   const [title, setTitle] = useState(product.title);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
