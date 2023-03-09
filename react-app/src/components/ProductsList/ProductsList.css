@@ -1,11 +1,16 @@
-div .products-list {
+.products-list {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* .title {
+.title {
     display: flex;
     flex-direction: column;
     align-items: center;
-} */
+}
+
+.products-list-image {
+    width: 300px;
+    height: auto;
+}

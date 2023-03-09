@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { allProductsThunk } from "../../store/products";
 import { Link } from "react-router-dom";
+import "./ProductsList.css";
 
 const ProductsList = (products) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,7 +30,7 @@ const ProductsList = (products) => {
         PRODUCTS.map((product) => (
           <div key={product.id} product={product}>
             <Link to={`/products/${product.id}`}>
-              <img src={product.imageURL} alt="img" />
+              <img className="products-list-image" src={product.imageURL} alt="img" />
             </Link>
             <div>{product.title}</div>
             <div>Stars {product.stars}/5</div>
