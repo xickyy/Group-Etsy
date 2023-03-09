@@ -1,12 +1,11 @@
-.products-list {
+div .products-list {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.title {
-    /* display: flex;
+/* .title {
+    display: flex;
     flex-direction: column;
-    align-items: center; */
-    text-align: center;
-}
+    align-items: center;
+} */
