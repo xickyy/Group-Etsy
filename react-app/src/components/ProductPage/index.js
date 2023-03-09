@@ -36,12 +36,16 @@ const ProductPage = () => {
   };
 
   let reviewState = useSelector((state) => state.reviews);
-  let reviewStateArr;
-  let individualRevArr;
+  let individualRevArr = [];
 
   if (isLoaded) {
-    reviewStateArr = Object.values(reviewState);
-    individualRevArr = reviewStateArr.filter((review) => {
+    individualRevArr = Object.values(reviewState);
+  };
+
+  console.log("INDL REV ARR" ,individualRevArr)
+
+  if (isLoaded && userState.user) {
+    individualRevArr = individualRevArr.filter((review) => {
       if (review.user.id === userState.user.id) {
         return Object.values(review);
       }
@@ -84,20 +88,6 @@ const ProductPage = () => {
     }
   };
 
-  // const userEditProduct = () => {
-  //   if (userState.user && userState.user.id === productState.user.id) {
-  //     return (
-  //       <button
-  //         onClick={() => {
-  //           editProductInfo();
-  //         }}
-  //       >
-  //         Edit Product
-  //       </button>
-  //     );
-  //   }
-  // };
-
   const handleAddToCart = () => {
     dispatch(addCartThunk(payload));
     history.push("/cart_items");
@@ -134,15 +124,15 @@ const ProductPage = () => {
 
   return (
     <div>
-      {productState[productId] && reviewStateArr && (
+      {productState[productId] && individualRevArr && (
         <div>
           <div>{productState[productId].title}</div>
           <img src={productState[productId].imageURL} alt="" />
           <div>Price: ${productState[productId].price}</div>
           <div>Description: {productState[productId].description}</div>
           {userAddCart()}
-          {reviewStateArr.length > 0 &&
-            reviewStateArr.map((review) => {
+          {individualRevArr.length > 0 &&
+            individualRevArr.map((review) => {
               return <ReviewCard key={review.id} review={review} />;
             })}
           {editProductInfo()}

@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation";
 import CreateProductForm from "./components/CreateProductForm";
 import ProductsList from "./components/ProductsList";
 import ProductPage from './components/ProductPage'
-import EditProductForm from "./components/EditProductForm";
 import CreateReviewForm from "./components/CreateReviewForm";
 import Cart from "./components/Cart";
 
@@ -38,9 +37,6 @@ function App() {
           </Route>
           <Route exact path='/products/:productId'>
             <ProductPage />
-          </Route>
-          <Route exact path='/products/:productId/edit'>
-            <EditProductForm />
           </Route>
           <Route exact path='/products/:productId/reviews/create'>
             <CreateReviewForm />
