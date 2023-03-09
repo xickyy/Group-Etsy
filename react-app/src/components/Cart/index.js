@@ -21,10 +21,8 @@ const Cart = () => {
     }
 
     const userDeleteCartItems = (id) => {
-        return <button onClick={() => { dispatch(deleteCartItemsThunk(id)) }}>Delete</button>
+        return <button className="delete-btn" onClick={() => { dispatch(deleteCartItemsThunk(id)) }}>Remove</button>
     }
-
-    console.log('cartitemss', cartItems)
 
     let cartReturn;
     if (isLoaded && cartItems && (cartItems.length === 0)) {
@@ -36,12 +34,21 @@ const Cart = () => {
         )
     } else {
         cartReturn = (
-            <div>
+            <div class='cart-list'>
                 {
                     cartItems && cartItems.map((product) => (
                         <div key={product.id}>
-                            <div>{product.product.title} {userDeleteCartItems(product.id)}</div>
-                            <Link to={`/products/${product.product.id}`} ><img src={product.product.imageURL} alt='img' /></Link>
+                            <div class="product-info">
+                                <Link to={`/products/${product.product.id}`}><img src={product.product.imageURL} alt='img' class='product-image' /></Link>
+                                <div class="product-details">
+                                    <span class='product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
+                                    <div class='product-actions'>
+                                        {userDeleteCartItems(product.id)}
+                                    </div>
+                                </div>
+                                <span class='product-price'>${product.product.price}</span>
+                            </div>
+                            <hr />
                         </div>
                     ))
                 }
