@@ -14,8 +14,8 @@ function Navigation({ isLoaded }) {
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
 					<NavLink id='link' exact to="/">Home</NavLink>
-					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
+					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<NavLink id = 'link' exact to="/cart_items">Cart</NavLink>
 				</li>
 				{isLoaded && (
