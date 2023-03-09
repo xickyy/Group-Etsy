@@ -1,5 +1,5 @@
 import "./EditReviewForm.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editReviewThunk } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
@@ -9,17 +9,10 @@ const EditReviewForm = ({ review, productId }) => {
     const sessionUser = useSelector((state) => state.session.user);
     const reviewId = review.id;
 
-    const [body, setBody] = useState("");
-    const [stars, setStars] = useState(0);
+    const [body, setBody] = useState(review.body);
+    const [stars, setStars] = useState(review.stars);
     const [errors, setErrors] = useState([]);
     const { closeModal } = useModal();
-
-    useEffect(() => {
-        if (review) {
-          setBody(review.body);
-          setStars(review.stars);
-        }
-      }, [review.review]);
 
     const updateBody = (e) => setBody(e.target.value);
     const updateStars = (e) => setStars(e.target.value);

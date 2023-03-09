@@ -42,9 +42,7 @@ const deleteReview = (review) => {
 export const allReviewsByProductIdThunk = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/${productId}/reviews`);
   const data = await res.json();
-  console.log("DATA IN REVIEW THUNK #####", data)
   dispatch(getReviewsByProductId(data.reviews));
-  console.log("AFTER THE REDUCER DISPATCH")
   return res;
 };
 
