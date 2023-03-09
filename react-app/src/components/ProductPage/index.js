@@ -42,8 +42,6 @@ const ProductPage = () => {
     individualRevArr = Object.values(reviewState);
   };
 
-  console.log("INDL REV ARR" ,individualRevArr)
-
   if (isLoaded && userState.user) {
     individualRevArr = individualRevArr.filter((review) => {
       if (review.user.id === userState.user.id) {
