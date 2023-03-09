@@ -36,11 +36,10 @@ const ProductPage = () => {
   };
 
   let reviewState = useSelector((state) => state.reviews);
-  let reviewStateArr;
+  let reviewStateArr = Object.values(reviewState);
   let individualRevArr;
 
-  if (isLoaded) {
-    reviewStateArr = Object.values(reviewState);
+  if (isLoaded && userState.user) {
     individualRevArr = reviewStateArr.filter((review) => {
       if (review.user.id === userState.user.id) {
         return Object.values(review);
@@ -83,20 +82,6 @@ const ProductPage = () => {
       );
     }
   };
-
-  // const userEditProduct = () => {
-  //   if (userState.user && userState.user.id === productState.user.id) {
-  //     return (
-  //       <button
-  //         onClick={() => {
-  //           editProductInfo();
-  //         }}
-  //       >
-  //         Edit Product
-  //       </button>
-  //     );
-  //   }
-  // };
 
   const handleAddToCart = () => {
     dispatch(addCartThunk(payload));
