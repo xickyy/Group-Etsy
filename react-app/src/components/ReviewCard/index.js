@@ -48,8 +48,8 @@ const ReviewCard = ({ review }) => {
 
     return (
       <div>
-        <div>
           <h3>Reviews</h3>
+        <div>
           <div>{review.user.firstName}- {review.body}</div>
           <u>Rated</u>: {review.stars}/5 Stars
         </div>

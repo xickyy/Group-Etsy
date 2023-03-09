@@ -1,0 +1,9 @@
+.createProduct-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.createProduct-errors {
+  color: red;
+}

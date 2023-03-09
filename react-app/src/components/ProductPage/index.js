@@ -68,7 +68,7 @@ const ProductPage = () => {
     );
     if (confirm) {
       dispatch(deleteProductThunk(productId));
-      history.push("/products");
+      history.push("/");
     }
   };
 

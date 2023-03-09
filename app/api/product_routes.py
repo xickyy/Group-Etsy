@@ -43,7 +43,7 @@ def add_products():
     """
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
- 
+
     if form.validate_on_submit():
         product = Product(
             title = form.title.data,
@@ -55,7 +55,7 @@ def add_products():
         db.session.add(product)
         db.session.commit()
         return product.to_dict()
-    return {"errors" : "error"}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @product_routes.route('/<int:product_id>', methods=["PUT"])
 def edits_a_product(product_id):
@@ -68,7 +68,7 @@ def edits_a_product(product_id):
     if form.validate_on_submit():
         data = form.data
         product = Product.query.get(product_id)
-       
+
         for key, value in data.items():
             setattr(product, key, value)
         db.session.commit()
@@ -124,7 +124,7 @@ def edits_a_review(product_id, review_id):
     if form.validate_on_submit():
         data = form.data
         review = Review.query.get(review_id)
-       
+
         for key, value in data.items():
             setattr(review, key, value)
         db.session.commit()
