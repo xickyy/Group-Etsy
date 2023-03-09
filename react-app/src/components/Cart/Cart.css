@@ -1,0 +1,49 @@
+.cart-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+.product-info {
+    display: flex;
+  }
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+
+.product-image {
+    width: 200px;
+    height: auto;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.product-title {
+    color: black;
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+.product-title:hover {
+    text-decoration: underline;
+}
+
+.delete-btn {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: lightgray;
+}
+
+.product-actions {
+    margin-top: 10px;
+  }
