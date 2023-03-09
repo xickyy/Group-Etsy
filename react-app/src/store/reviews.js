@@ -97,7 +97,6 @@ const reviewReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case GET_REVIEWS_PRODUCT:
-      newState = {};
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
