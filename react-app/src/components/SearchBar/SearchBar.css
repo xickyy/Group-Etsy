@@ -66,11 +66,11 @@ input:focus {
   margin-left: 10px;
 }
 
-a {
+.dataItem {
   text-decoration: none;
 }
 
-a:hover {
+.dataItem:hover {
   background-color: lightgray;
 }
 
