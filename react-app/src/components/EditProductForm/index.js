@@ -2,7 +2,6 @@ import "./EditProductForm.css";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { allProductsThunk } from "../../store/products";
 import { editProductThunk } from "../../store/products";
 import { useModal } from "../../context/Modal";

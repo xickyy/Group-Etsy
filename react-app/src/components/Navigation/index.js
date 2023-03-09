@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
-import Cart from '../Cart'
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
