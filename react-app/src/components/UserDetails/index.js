@@ -1,9 +1,9 @@
 import './UserDetails.css'
 
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-const UserDetail = ({ placeholder, data }) => {
+const UserDetail = () => {
 
     const [allProducts, setAllProducts] = useState([]);
     const [allReviews, setAllReviews] = useState([]);
@@ -15,7 +15,7 @@ const UserDetail = ({ placeholder, data }) => {
           setAllProducts(productsData.products);
     
           const reviewsResponse = await fetch('/api/products/reviews/current_user');
-          const { reviews }  = await reviewsResponse.json();
+          const { reviews } = await reviewsResponse.json();
           setAllReviews(reviews);
         }
         fetchData();

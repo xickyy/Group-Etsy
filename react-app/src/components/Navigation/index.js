@@ -4,12 +4,9 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
-import Cart from '../Cart'
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-	const userState = useSelector((state) => state.session);
-
 
 	let sessionLinks;
 	if (sessionUser && sessionUser.id) {
@@ -17,10 +14,9 @@ function Navigation({ isLoaded }) {
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
 					<NavLink id='link' exact to="/">Home</NavLink>
-					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
+					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 					<NavLink id = 'link' exact to="/cart_items">Cart</NavLink>
-					<h2>{`Welcome back, ${userState.user.firstName} ${userState.user.lastName}`}</h2>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>
