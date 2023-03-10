@@ -52,7 +52,7 @@ const CreateProductForm = () => {
       return (
         <div className='createProduct-errors-container'>
           {errors.map((error, index) => (
-            <li className='createProduct-errors' key={index}>{error}</li>
+            <li className='createProduct-errors'  key={index}>Error occurred - {error} </li>
           ))}
         </div>
 
@@ -128,7 +128,7 @@ const CreateProductForm = () => {
         </div>
 
         <div>
-          <button type="submit">Create New Product</button>
+          <button className='createProduct-save' type="submit">Save</button>
         </div>
       </form>
     </section>
