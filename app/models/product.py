@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Product(db.Model):
-    __tablename__ = 'products'
+    __table_name__ = 'products'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

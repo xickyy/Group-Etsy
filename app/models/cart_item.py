@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class CartItem(db.Model):
-    __tablename__: 'cart_items'
+    __table_name__: 'cart_items'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
