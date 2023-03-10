@@ -29,7 +29,7 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
-					<NavLink id='link' exact to="/">Home</NavLink>
+					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 				</li>
 				{isLoaded && (
