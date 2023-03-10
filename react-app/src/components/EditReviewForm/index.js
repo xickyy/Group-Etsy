@@ -27,16 +27,11 @@ const EditReviewForm = ({ review, productId }) => {
           stars
         };
 
-        let editedReview = await dispatch(editReviewThunk(payload)).catch(
-            async (res) => {
-              const data = await res.json();
-              if (data && data.errors) setErrors(data.errors)
-              else closeModal();
-            }
-        );
-      
-        if (editedReview) {
-            closeModal();
+        let editedReview = await dispatch(editReviewThunk(payload))
+        if (!editedReview.id) {
+          setErrors(editedReview);
+        } else {
+          closeModal()
         }
     };
 
@@ -54,6 +49,7 @@ const EditReviewForm = ({ review, productId }) => {
             placeholder={"Review here"}
             value={body}
             onChange={updateBody}
+            required
           />
 
           <p>How would you rate this product?</p>

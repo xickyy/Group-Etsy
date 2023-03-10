@@ -112,6 +112,7 @@ def add_reviews(product_id):
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400    
 
 @product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["PUT"])
 def edits_a_review(product_id, review_id):

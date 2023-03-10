@@ -64,6 +64,13 @@ export const makeReviewThunk = (productId, review) => async (dispatch) => {
         const newReview = await res.json();
         dispatch(addReview(newReview));
         return newReview;
+    } else if (res.status < 500) {
+      const data = await res.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
     }
 };
 
