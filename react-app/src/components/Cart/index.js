@@ -21,7 +21,7 @@ const Cart = () => {
     }
 
     const userDeleteCartItems = (id) => {
-        return <button className="delete-btn" onClick={() => { dispatch(deleteCartItemsThunk(id)) }}>Remove</button>
+        return <button className="cart-delete-btn" onClick={() => { dispatch(deleteCartItemsThunk(id)) }}>Remove</button>
     }
 
     let cartReturn;
@@ -38,15 +38,15 @@ const Cart = () => {
                 {
                     cartItems && cartItems.map((product) => (
                         <div key={product.id}>
-                            <div class="product-info">
-                                <Link to={`/products/${product.product.id}`}><img src={product.product.imageURL} alt='img' class='product-image' /></Link>
-                                <div class="product-details">
-                                    <span class='product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
-                                    <div class='product-actions'>
+                            <div class="cart-product-info">
+                                <Link to={`/products/${product.product.id}`}><img src={product.product.imageURL} alt='img' class='cart-product-image' /></Link>
+                                <div class="cart-product-details">
+                                    <span class='cart-product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
+                                    <div class='cart-product-actions'>
                                         {userDeleteCartItems(product.id)}
                                     </div>
                                 </div>
-                                <span class='product-price'>${product.product.price}</span>
+                                <span class='cart-product-price'>${product.product.price}</span>
                             </div>
                             <hr />
                         </div>

@@ -2,6 +2,7 @@ import './UserDetails.css'
 
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
 
 const UserDetail = () => {
 
@@ -35,15 +36,18 @@ const UserDetail = () => {
    
 return (
     <div>
-        <div>Products</div>
+        <div><h2>My Products</h2></div>
         {
             productArr && productArr.map((product) => (
-                <div key={product.id}>{product.title}</div>
+                <div key={product.id}>
+                    <Link to={`/products/${product.id}`}><img src={product.imageURL} alt='img' class='user-detail-product-image'/></Link>
+                    {product.title}
+                    </div>
 
             ))
         }
         <br></br>
-        <div>Reviews</div>
+        <div><h2>My Reviews</h2></div>
         {
             allReviews && allReviews.map((review) => (
                 <div key={review.id}>{review.product.title}: {review.body}</div>
