@@ -15,6 +15,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { productId } = useParams();
+  const [hasReview, setHasReview] = useState(false);
 
   useEffect(() => {
     dispatch(oneProductThunk(productId))
@@ -44,7 +45,7 @@ const ProductPage = () => {
 
   if (isLoaded && userState.user) {
     individualRevArr = individualRevArr.filter((review) => {
-      if (review.user.id === userState.user.id) {
+      if (review.product.id === parseInt(productId)) {
         return Object.values(review);
       }
     });
@@ -108,7 +109,7 @@ const ProductPage = () => {
     if (
       userState.user &&
       userState.user.id !== productState[productId].user.id &&
-      individualRevArr.length === 0
+      !hasReview
     ) {
       return (
         <OpenModalButton
@@ -128,9 +129,10 @@ const ProductPage = () => {
           <div>Price: ${productState[productId].price}</div>
           <div>Description: {productState[productId].description}</div>
           {userAddCart()}
+          <h3>Reviews</h3>
           {individualRevArr.length > 0 &&
             individualRevArr.map((review) => {
-              return <ReviewCard key={review.id} review={review} />;
+              return <ReviewCard key={review.id} review={review} setHasReview={setHasReview} />;
             })}
           {editProductInfo()}
           {userDeleteProduct()}
