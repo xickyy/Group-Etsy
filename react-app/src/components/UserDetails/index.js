@@ -40,19 +40,19 @@ const UserDetail = () => {
 
 return (
     <div>
-        <div class='user-detail-user-info'>
-            <img src={currentUser.imageURL} alt='img' class='user-detail-user-image'/>
+        <div className='user-detail-user-info'>
+            <img src={currentUser.imageURL} alt='img' className='user-detail-user-image'/>
             <h2>{currentUser.firstName}</h2>
         </div>
         <div><h2>My Products</h2></div>
-        <div class='user-detail-product-arrange'>{
+        <div className='user-detail-product-arrange'>{
             productArr && productArr.map((product) => (
-                <div key={product.id} class='user-detail-product-card'>
-                    <Link to={`/products/${product.id}`}><img src={product.imageURL} alt='img' class='user-detail-product-image'/></Link>
+                <div key={product.id} className='user-detail-product-card'>
+                    <Link to={`/products/${product.id}`}><img src={product.imageURL} alt='img' className='user-detail-product-image'/></Link>
                     <div>
-                        <span class='user-detail-product-title'><Link to={`/products/${product.id}`}>{product.title}</Link></span>
-                        <br></br><span class='user-detail-product-price'>${product.price}</span>
-                        <br></br><span class='user-detail-product-price'>{product.description}</span>
+                        <span className='user-detail-product-title'><Link to={`/products/${product.id}`}>{product.title}</Link></span>
+                        <br></br><span className='user-detail-product-price'>${product.price}</span>
+                        <br></br><span className='user-detail-product-price'>{product.description}</span>
                     </div>
                     </div>
 
@@ -60,12 +60,12 @@ return (
         }</div>
         <br></br>
         <div><h2>My Reviews</h2></div>
-        <div class='user-detail-product-arrange'>{
+        <div className='user-detail-product-arrange'>{
             allReviews && allReviews.map((review) => (
-                <div key={review.id} class='user-detail-product-card'>
-                    <Link to={`/products/${review.product.id}`}><img src={review.product.imageURL} alt='img' class='user-detail-product-image'/></Link>
+                <div key={review.id} className='user-detail-product-card'>
+                    <Link to={`/products/${review.product.id}`}><img src={review.product.imageURL} alt='img' className='user-detail-product-image'/></Link>
                     <div>
-                    <span class='user-detail-product-title'><Link to={`/products/${review.product.id}`}>{review.product.title}</Link></span>
+                    <span className='user-detail-product-title'><Link to={`/products/${review.product.id}`}>{review.product.title}</Link></span>
                     <br></br>{review.body}
                     </div>
                 </div>

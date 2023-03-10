@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
 					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
-					<NavLink id = 'link' exact to="/cart_items"><i class="fa-solid fa-cart-shopping"></i></NavLink>
+					<NavLink id = 'link' exact to="/cart_items"><i className="fa-solid fa-cart-shopping"></i></NavLink>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>

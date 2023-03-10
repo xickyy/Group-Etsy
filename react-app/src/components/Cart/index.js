@@ -34,19 +34,19 @@ const Cart = () => {
         )
     } else {
         cartReturn = (
-            <div class='cart-list'>
+            <div className='cart-list'>
                 {
                     cartItems && cartItems.map((product) => (
                         <div key={product.id}>
-                            <div class="cart-product-info">
-                                <Link to={`/products/${product.product.id}`}><img src={product.product.imageURL} alt='img' class='cart-product-image' /></Link>
-                                <div class="cart-product-details">
-                                    <span class='cart-product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
-                                    <div class='cart-product-actions'>
+                            <div className="cart-product-info">
+                                <Link to={`/products/${product.product.id}`}><img src={product.product.imageURL} alt='img' className='cart-product-image' /></Link>
+                                <div className="cart-product-details">
+                                    <span className='cart-product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
+                                    <div className='cart-product-actions'>
                                         {userDeleteCartItems(product.id)}
                                     </div>
                                 </div>
-                                <span class='cart-product-price'>${product.product.price}</span>
+                                <span className='cart-product-price'>${product.product.price}</span>
                             </div>
                             <hr />
                         </div>
