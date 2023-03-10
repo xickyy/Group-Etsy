@@ -16,21 +16,29 @@
     width: 500px;
   }
 .user-detail-product-card{
-    border: 1px solid;
+    /* border: 1px solid; */
     position: relative;
     overflow: hidden;
     margin-top: 5px;
     margin-bottom: 5px;
     width: 350px;
-    height: 280px;
+    height: 400px;
     background: white;
     border-radius: 10px;
 }
 .user-detail-product-image {
-    width: 200px;
-    height: 150px;
-    margin-left: 75px;
-    margin-right: 75px;
+    width: 350px;
+    height: 250px;
+    /* margin-left: 75px;
+    margin-right: 75px; */
+    /* max-height: 200px;
+    max-width: 340px;
+    border-radius: 10px; 
+    background-size: cover; */
+    /* width: 350px;
+    height: 250px;
+    /* margin-left: 75px;
+    margin-right: 75px; */ 
 }
 
 .user-detail-product-title{
