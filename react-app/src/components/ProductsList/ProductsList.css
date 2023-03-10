@@ -4,17 +4,41 @@
     align-items: center;
 }
 
-.title {
+.products-list-title {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    font-weight: 100; 
+    font-size: 30px;
+}
+
+.products-list-yellow {
+    background-color: rgb(248, 230, 207);
+    padding-bottom: 400px;
+    padding-right: 1000px;
+    padding-left: 1000px;
+    margin-top: 10px;
+    width: 600px;
 }
 
 .products-list-image {
     width: 300px;
     height: auto;
+    border-radius: 10px; 
 }
 
 #products-list-link {
     font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
-    margin-left: -0.5rem;
+    margin-left: 0.5rem;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+}
+
+.products-list-products {
+    display: flex;
+    flex-direction: column;
+}
+
+.products-list-grid {
+    display: flex;
+    flex-wrap: wrap;
 }
