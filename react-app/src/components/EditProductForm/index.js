@@ -38,16 +38,11 @@ const EditProductForm = ({ product }) => {
       imageURL,
     };
 
-    let editedProduct = await dispatch(editProductThunk(payload)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-        else closeModal();
-      }
-    );
-
-    if (editedProduct) {
-      closeModal();
+    const editedProduct = await dispatch(editProductThunk(payload))
+    if (!editedProduct.id) {
+      setErrors(editedProduct);
+    } else {
+      closeModal()
     }
   };
 
@@ -66,6 +61,7 @@ const EditProductForm = ({ product }) => {
           placeholder="Product title here"
           value={title}
           onChange={updateTitle}
+          required
         />
 
         <input
@@ -73,6 +69,7 @@ const EditProductForm = ({ product }) => {
           placeholder="Product description here"
           value={description}
           onChange={updateDescription}
+          required
         />
 
         <input
@@ -81,6 +78,7 @@ const EditProductForm = ({ product }) => {
           placeholder="Price here"
           value={price || ""}
           onChange={updatePrice}
+          required
         />
 
         <input
