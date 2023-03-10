@@ -24,7 +24,6 @@ const ProductPage = () => {
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
-  console.log("####",productState)
 
   let userId;
   if (userState.user) {
