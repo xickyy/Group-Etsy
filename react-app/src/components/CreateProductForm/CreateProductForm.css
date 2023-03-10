@@ -34,7 +34,13 @@
 }
 
 .createProduct-save {
+  border-radius: 10%;
+  justify-items: flex-end;
+  color: white;
+  background-color: black;
+}
+
+.createProduct-save-container {
   display: flex;
-  flex-direction: row;
-  align-content: flex-end
+  justify-content: flex-end;
 }
