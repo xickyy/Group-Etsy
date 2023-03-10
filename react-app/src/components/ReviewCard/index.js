@@ -11,7 +11,7 @@ const ReviewCard = ({ review, setHasReview }) => {
 
     const dispatch = useDispatch();
 
-    if (review.user.id === userState.user.id) {
+    if (review.user.id === userState.user?.id) {
       setHasReview(true);
     };
 
