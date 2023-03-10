@@ -123,21 +123,29 @@ const ProductPage = () => {
   return (
     <div>
       {productState[productId] && individualRevArr && (
-        <div>
-          <div>{productState[productId].title}</div>
-          <img src={productState[productId].imageURL} alt="" />
-          <div>Price: ${productState[productId].price}</div>
-          <div>Description: {productState[productId].description}</div>
-          {userAddCart()}
-          <h3>Reviews</h3>
-          {individualRevArr.length > 0 &&
-            individualRevArr.map((review) => {
-              return <ReviewCard key={review.id} review={review} setHasReview={setHasReview} />;
-            })}
-          {editProductInfo()}
-          {userDeleteProduct()}
+        <div className='product-page-container'>
+          <div className='product-page-rev-img'>
+            <img className='product-page-img' src={productState[productId].imageURL} alt="" />
+            <div className='product-page-rev'>
+              <h3>Reviews</h3>
+              {userAddReview()}
+              {individualRevArr.length > 0 &&
+                individualRevArr.map((review) => {
+                  return <ReviewCard key={review.id} review={review} setHasReview={setHasReview} />;
+                })}
+            </div>
+          </div>
+          <div className='product-page-details'>
+            <h3 className="product-page-de-price">{`$${productState[productId].price}`}</h3>
+            <div className="product-page-de">{productState[productId].title}</div>
+            {userAddCart()}
+            <div className="product-page-de"><h4>Description:</h4> {productState[productId].description}</div>
+            <div className='product-page-edit-del'>
+              {editProductInfo()}
+              {userDeleteProduct()}
+            </div>
+          </div>
 
-          {userAddReview()}
         </div>
       )}
     </div>
