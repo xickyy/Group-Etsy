@@ -6,11 +6,14 @@
 
 .title {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
 .products-list-image {
     width: 300px;
     height: auto;
+}
+
+#products-list-link {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
 }

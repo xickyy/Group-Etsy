@@ -43,7 +43,7 @@ const ProductPage = () => {
     individualRevArr = Object.values(reviewState);
   };
 
-  if (isLoaded && userState.user) {
+  if (isLoaded) {
     individualRevArr = individualRevArr.filter((review) => {
       if (review.product.id === parseInt(productId)) {
         return Object.values(review);
@@ -108,7 +108,7 @@ const ProductPage = () => {
   const userAddReview = () => {
     if (
       userState.user &&
-      userState.user.id !== productState[productId].user.id &&
+      userState.user?.id !== productState[productId].user.id &&
       !hasReview
     ) {
       return (

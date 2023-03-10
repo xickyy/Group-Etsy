@@ -23,7 +23,7 @@ const ProductsList = () => {
   return (
     <div className="products-list">
       {sessionUser && sessionUser.id ? (
-        <h2 className="title">Welcome back, {<Link to={`/user_details`}>{sessionUser.firstName}</Link>}!</h2>
+        <h2 className="title">Welcome back,{<Link id="products-list-link" to={`/user_details`}>&nbsp;{sessionUser.firstName}</Link>}!</h2>
       ) : <h2 className="title">Incredible style and decor, plus one-of-a-kind gifts right this way!</h2>}
 
       {PRODUCTS &&
