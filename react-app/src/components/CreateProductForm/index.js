@@ -50,11 +50,12 @@ const CreateProductForm = () => {
   const errorHandle = () => {
     if (errors.length > 0) {
       return (
-        <ul>
+        <div className='createProduct-errors-container'>
           {errors.map((error, index) => (
             <li className='createProduct-errors' key={index}>{error}</li>
           ))}
-        </ul>
+        </div>
+
       )
     }
   }
@@ -70,11 +71,12 @@ const CreateProductForm = () => {
         </div>
 
         <div className='createProduct-field'>
-          <div>
+          <div className='createProduct-keys'>
             <h4>Title*</h4>
             <p>Include keywords that buyers would use to search for your item.</p>
           </div>
           <input
+            className='createProduct-input'
             type="text"
             placeholder="Product title here"
             value={title}
@@ -83,11 +85,12 @@ const CreateProductForm = () => {
         </div>
 
         <div className='createProduct-field'>
-        <div>
+        <div className='createProduct-keys'>
             <h4>Description*</h4>
-            <p>Start with a brief overview that describes your items finest features</p>
+            <p>Start with a brief overview that describes your items finest features.</p>
           </div>
           <textarea
+            className='createProduct-input-description'
             type="text"
             placeholder="Product description here"
             value={description}
@@ -96,11 +99,12 @@ const CreateProductForm = () => {
         </div>
 
         <div className='createProduct-field'>
-        <div>
+        <div className='createProduct-keys'>
             <h4>Price*</h4>
-            <p>provide a fair and reasonable price for your product.</p>
+            <p>Provide a fair and reasonable price for your product.</p>
           </div>
           <input
+            className='createProduct-input'
             type="number"
             min="0"
             placeholder="Price here"
@@ -110,11 +114,12 @@ const CreateProductForm = () => {
         </div>
 
         <div className='createProduct-field'>
-        <div>
+        <div className='createProduct-keys'>
             <h4>Image URL</h4>
-            <p>Although not required, it is reccomended to provide an image for your product so buyers see exactly what they are getting.</p>
+            <p>Although not required, it is recommended to provide an image for your product so buyers see exactly what they are getting.</p>
           </div>
           <input
+            className='createProduct-input'
             type="text"
             placeholder="Image url here"
             value={imageURL}
