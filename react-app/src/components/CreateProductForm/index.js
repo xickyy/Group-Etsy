@@ -25,6 +25,8 @@ const CreateProductForm = () => {
     dispatch(allProductsThunk());
   }, [dispatch]);
 
+  let createdProduct;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,59 +37,98 @@ const CreateProductForm = () => {
       imageURL,
     };
 
-    let createdProduct = await dispatch(makeProductThunk(payload)).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-
-    if (createdProduct) {
-      history.push(`/products/${createdProduct.id}`);
+    createdProduct = await dispatch(makeProductThunk(payload))
+    if (createdProduct && createdProduct.id) {
+      history.push(`/products/${createdProduct.id}`)
+    } else {
+      setErrors(createdProduct);
     }
+
   };
+
+
+  const errorHandle = () => {
+    if (errors.length > 0) {
+      return (
+        <div className='createProduct-errors-container'>
+          {errors.map((error, index) => (
+            <li className='createProduct-errors'  key={index}>Error occurred - {error} </li>
+          ))}
+        </div>
+
+      )
+    }
+  }
+
 
   return sessionUser.id ? (
     <section>
       <form onSubmit={handleSubmit}>
+        {errorHandle()}
         <div>
-          {errors.map((error, index) => (
-            <li key={index}>Error: {error}</li>
-          ))}
+          <h2>Listing details</h2>
+          <p>Tell the world all about your item and why they'll love it.</p>
         </div>
-        <p>Create a Product:</p>
 
-        <input
-          type="text"
-          placeholder="Product title here"
-          value={title}
-          onChange={updateTitle}
-        />
+        <div className='createProduct-field'>
+          <div className='createProduct-keys'>
+            <h4>Title*</h4>
+            <p>Include keywords that buyers would use to search for your item.</p>
+          </div>
+          <input
+            className='createProduct-input'
+            type="text"
+            placeholder="Product title here"
+            value={title}
+            onChange={updateTitle}
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Product description here"
-          value={description}
-          onChange={updateDescription}
-        />
+        <div className='createProduct-field'>
+        <div className='createProduct-keys'>
+            <h4>Description*</h4>
+            <p>Start with a brief overview that describes your items finest features.</p>
+          </div>
+          <textarea
+            className='createProduct-input-description'
+            type="text"
+            placeholder="Product description here"
+            value={description}
+            onChange={updateDescription}
+          />
+        </div>
 
-        <input
-          type="number"
-          min="0"
-          placeholder="Price here"
-          value={price || ""}
-          onChange={updatePrice}
-        />
+        <div className='createProduct-field'>
+        <div className='createProduct-keys'>
+            <h4>Price*</h4>
+            <p>Provide a fair and reasonable price for your product.</p>
+          </div>
+          <input
+            className='createProduct-input'
+            type="number"
+            min="0"
+            placeholder="Price here"
+            value={price || ""}
+            onChange={updatePrice}
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Image url here"
-          value={imageURL}
-          onChange={updateImageURL}
-        />
+        <div className='createProduct-field'>
+        <div className='createProduct-keys'>
+            <h4>Image URL</h4>
+            <p>Although not required, it is recommended to provide an image for your product so buyers see exactly what they are getting.</p>
+          </div>
+          <input
+            className='createProduct-input'
+            type="text"
+            placeholder="Image url here"
+            value={imageURL}
+            onChange={updateImageURL}
+          />
+        </div>
 
         <div>
-          <button type="submit">Create New Product</button>
+          <button className='createProduct-save' type="submit">Save</button>
         </div>
       </form>
     </section>
