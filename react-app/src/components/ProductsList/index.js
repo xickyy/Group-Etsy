@@ -4,7 +4,7 @@ import { allProductsThunk } from "../../store/products";
 import { Link } from "react-router-dom";
 import "./ProductsList.css";
 
-const ProductsList = (products) => {
+const ProductsList = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,7 +23,7 @@ const ProductsList = (products) => {
   return (
     <div className="products-list">
       {sessionUser && sessionUser.id ? (
-        <h2 className="title">{`Welcome back, ${sessionUser.firstName}!`}</h2>
+        <h2 className="title">Welcome back, {<Link to={`/user_details`}>{sessionUser.firstName}</Link>}!</h2>
       ) : <h2 className="title">Incredible style and decor, plus one-of-a-kind gifts right this way!</h2>}
 
       {PRODUCTS &&
@@ -32,7 +32,7 @@ const ProductsList = (products) => {
             <Link to={`/products/${product.id}`}>
               <img className="products-list-image" src={product.imageURL} alt="img" />
             </Link>
-            <div>{product.title}</div>
+            <div className="">{product.title}</div>
             <div>Stars {product.stars}/5</div>
             <div>${product.price}</div>
           </div>
