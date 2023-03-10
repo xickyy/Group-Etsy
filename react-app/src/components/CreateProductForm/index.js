@@ -127,7 +127,7 @@ const CreateProductForm = () => {
           />
         </div>
 
-        <div>
+        <div className='createProduct-save-container'>
           <button className='createProduct-save' type="submit">Save</button>
         </div>
       </form>
