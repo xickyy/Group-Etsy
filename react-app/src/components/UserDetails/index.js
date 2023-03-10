@@ -38,7 +38,6 @@ const UserDetail = () => {
         }
     });
 
-   console.log(currentUser)
 return (
     <div>
         <div class='user-detail-user-info'>
