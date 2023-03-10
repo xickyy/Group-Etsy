@@ -39,7 +39,7 @@ const SearchBar = ({ placeholder, data }) => {
 
 
   return (
-    <div className="search">
+    <div className="search" id='link'>
       <div className='searchInputs'>
         <input type='text' placeholder={placeholder} value={search} onChange={handleFilter} />
         <div className='searchIcon'>

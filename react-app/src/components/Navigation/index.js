@@ -13,10 +13,10 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<ul className='allNavLinks'>
 				<li className='navLinks'>
-					<NavLink id='link' exact to="/">Home</NavLink>
+					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
-					<NavLink id = 'link' exact to="/cart_items">Cart</NavLink>
+					<NavLink id = 'link' exact to="/cart_items"><i class="fa-solid fa-cart-shopping"></i></NavLink>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>
@@ -48,21 +48,6 @@ function Navigation({ isLoaded }) {
 		</div>
 	)
 
-	// return (
-	// 		<ul className='allNavLinks'>
-	// 			<li className='navLinks'>
-	// 				<NavLink id='link' exact to="/">Home</NavLink>
-	// 				<NavLink id='link' exact to="/products">Products</NavLink>
-	// 				<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
-	// 				<SearchBar id='link' placeholder='Search for a product' />
-	// 			</li>
-	// 			{isLoaded && (
-	// 				<li className='navLinks'>
-	// 					<ProfileButton id='profileLink' user={sessionUser} />
-	// 				</li>
-	// 			)}
-	// 		</ul>
-	// );
 }
 
 export default Navigation;
