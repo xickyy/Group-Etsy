@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../SearchBar';
+import img from './epsy-logo.png'
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
@@ -13,7 +14,7 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<ul className='allNavLinks'>
 				<li className='navLinks-logged-in'>
-					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
+					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src={img} alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
 				</li>
