@@ -1,7 +1,14 @@
 .products-list {
+    display: grid;
+    grid-template-areas:
+  'product product product product'
+  'product product product product';
+}
+
+.product-list-intro-message {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .title {
@@ -10,7 +17,7 @@
 }
 
 .products-list-image {
-    width: 300px;
+    width: 200px;
     height: auto;
 }
 
