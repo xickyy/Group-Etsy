@@ -1,13 +1,15 @@
 .cart-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 
 .cart-product-info {
     display: flex;
     width: 500px;
+    justify-content: space-between;
+    align-items: center;
   }
 
 .cart-product-details {
@@ -24,11 +26,13 @@
 .cart-product-price {
     font-weight: bold;
     font-size: 20px;
+    text-align: right;
 }
 
 .cart-product-title {
     color: black;
     font-size: 20px;
+    text-align: left;
     margin-right: 50px;
 }
 

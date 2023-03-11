@@ -44,6 +44,7 @@ const Cart = () => {
                                     <span className='cart-product-title'><Link to={`/products/${product.product.id}`}>{product.product.title}</Link></span>
                                     <div className='cart-product-actions'>
                                         {userDeleteCartItems(product.id)}
+                                        
                                     </div>
                                 </div>
                                 <span className='cart-product-price'>${product.product.price}</span>
