@@ -48,9 +48,6 @@ li.navLinks {
 .profile-button-img {
   width: 43px;
   height: 43px;
-  border: 1px;
-  border-style: solid;
-  border-color: black;
   border-radius: 50%;
   cursor: pointer;
 }

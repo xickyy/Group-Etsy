@@ -1,7 +1,7 @@
 /* TODO Add site wide styles */
 
 a, div, textarea {
-    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-family: "Graphik Webfont","-apple-system","Helvetica Neue","Droid Sans",Arial,sans-serif;
     color: #222;
     text-decoration: none;
 };
@@ -11,9 +11,9 @@ a:hover {
 }
 
 h1 {
-    font-family: ""Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif";
+    font-family: "Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif",Georgia,serif;
 }
 
 h2 {
-    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+    font-family: "Guardian-EgypTT","Charter","Charter Bitstream","Cambria","Noto Serif Light","Droid Serif",Georgia,serif;
 }

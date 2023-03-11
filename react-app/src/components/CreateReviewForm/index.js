@@ -41,7 +41,7 @@ const CreateReviewForm = (productId) => {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <div>
+      <div className="create-review-modal">
         <p>Write a Review:</p>
         <input
           type="text"
@@ -61,7 +61,7 @@ const CreateReviewForm = (productId) => {
           max="5"
         />
         <div>
-          <button type="submit">
+          <button className="create-review-button" type="submit">
             Create New Review
           </button>
         </div>

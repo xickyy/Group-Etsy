@@ -54,9 +54,10 @@ const EditProductForm = ({ product }) => {
             <li key={index}>Error: {error}</li>
           ))}
         </div>
+        <div className="edit-product-form-div">
         <p>Edit Product:</p>
 
-        <input
+        <input className="edit-product-form-inputs"
           type="text"
           placeholder="Product title here"
           value={title}
@@ -64,7 +65,7 @@ const EditProductForm = ({ product }) => {
           required
         />
 
-        <input
+        <textarea className="edit-product-form-inputs"
           type="text"
           placeholder="Product description here"
           value={description}
@@ -72,7 +73,7 @@ const EditProductForm = ({ product }) => {
           required
         />
 
-        <input
+        <input className="edit-product-form-inputs"
           type="number"
           min="0"
           placeholder="Price here"
@@ -81,7 +82,7 @@ const EditProductForm = ({ product }) => {
           required
         />
 
-        <input
+        <input className="edit-product-form-inputs"
           type="text"
           placeholder="Image url here"
           value={imageURL}
@@ -89,7 +90,8 @@ const EditProductForm = ({ product }) => {
         />
 
         <div>
-          <button type="submit">Edit Product</button>
+          <button className="edit-product-button" type="submit">Edit Product</button>
+        </div>
         </div>
       </form>
     </section>

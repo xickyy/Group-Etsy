@@ -23,6 +23,7 @@ function LoginFormModal() {
 
   return (
     <>
+    <div className="login-modal-div">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -30,26 +31,29 @@ function LoginFormModal() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <div>
+        <label className="login-modal-input-title">
           Email
+        </label>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
+        <label className="login-modal-input-title">
           Password
+        </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+        </div>
+        <button className="login-modal-button" type="submit">Log In</button>
       </form>
+    </div>
     </>
   );
 }
