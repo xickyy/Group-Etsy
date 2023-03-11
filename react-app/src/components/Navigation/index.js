@@ -12,14 +12,14 @@ function Navigation({ isLoaded }) {
 	if (sessionUser && sessionUser.id) {
 		sessionLinks = (
 			<ul className='allNavLinks'>
-				<li className='navLinks'>
+				<li className='navLinks-logged-in'>
 					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
-					<NavLink id = 'link' exact to="/cart_items"><i className="fa-solid fa-cart-shopping"></i></NavLink>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>
+						<NavLink id = 'link' exact to="/cart_items"><i className="fa-solid fa-cart-shopping"></i></NavLink>
 						<ProfileButton id='profileLink' user={sessionUser} />
 					</li>
 				)}
@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<ul className='allNavLinks'>
-				<li className='navLinks'>
+				<li className='navLinks-logged-out'>
 					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2560px-Etsy_logo.svg.png' alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
 				</li>

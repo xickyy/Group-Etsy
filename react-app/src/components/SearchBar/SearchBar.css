@@ -12,7 +12,7 @@
   font-size: 18px;
   padding: 15px;
   height: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 .searchIcon {
@@ -29,6 +29,10 @@
   place-items: center;
 }
 
+div#link.search {
+  width: 100%;
+}
+
 input:focus {
   outline: none;
 }
@@ -42,7 +46,7 @@ input:focus {
   position: absolute;
   left: auto;
   margin-top: 5px;
-  width: 382px;
+  width: 500px;
   height: 200px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

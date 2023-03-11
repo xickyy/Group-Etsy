@@ -9,6 +9,23 @@
   flex-direction: row;
 }
 
+.navLinks-logged-out {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.prof-button {
+  width: 100%;
+}
+
+.navLinks-logged-in {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .allNavLinks {
   display: flex;
   justify-content: space-between;
@@ -20,6 +37,13 @@
   padding: 10px;
   margin: auto;
 }
+
+
+.profile-button-img {
+  width: 35px;
+  height: 35px;
+}
+
 
 .navigation-etsy-logo {
   max-width: 200px;

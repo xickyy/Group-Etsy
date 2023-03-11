@@ -54,11 +54,25 @@ function ProfileButton({ user }) {
     return dispatch(sessionActions.demoLogin());
   };
 
+  let ifUser = () => {
+    if (user) {
+      return (
+        <button onClick={openMenu}>
+          <img className="profile-button-img" src={user.imageURL}></img>
+        </button>
+      )
+    } else {
+      return (
+        <button onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button>
+      )
+    }
+  }
+
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      {ifUser()}
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
