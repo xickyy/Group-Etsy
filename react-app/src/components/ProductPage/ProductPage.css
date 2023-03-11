@@ -57,5 +57,9 @@
     height: 35px;
 }
 
+.product-page-edit-del {
+    display: flex;
+}
+
 
 
