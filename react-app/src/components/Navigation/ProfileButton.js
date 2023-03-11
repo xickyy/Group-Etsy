@@ -61,7 +61,7 @@ function ProfileButton({ user }) {
       )
     } else {
       return (
-        <button onClick={openMenu}>
+        <button className="profile-button-img-logged-out" onClick={openMenu}>
           <i className="fas fa-user-circle" />
         </button>
       )
@@ -74,12 +74,12 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
+            <li className="logged-in-profile-dropdown-user-info">{user.username}</li>
+            <li className="logged-in-profile-dropdown-user-info">{user.email}</li>
+            <li className="logged-in-profile-dropdown"><button className="user-details-button" onClick={handleUserDetails}>User Details</button></li>
+            <li className="logged-in-profile-dropdown">
+              <button className="logout-button" onClick={handleLogout}>Log Out</button>
             </li>
-            <li><button onClick={handleUserDetails}>User Details</button></li>
           </>
         ) : (
           <>
@@ -96,7 +96,7 @@ function ProfileButton({ user }) {
             />
 
             <form onSubmit={demoSubmit}>
-              <button>Demo Log In</button>
+              <button className="demo-login">Demo Log In</button>
             </form>
           </>
         )}

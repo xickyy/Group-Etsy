@@ -41,7 +41,7 @@ const ReviewCard = ({ review, setHasReview }) => {
   const deleteReview = (e) => {
     if (userState.user && review && (userState.user.id === review.user.id)) {
       return (
-        <button
+        <button className="review-card-delete-button"
           onClick={() => {
             reviewDeleter();
           }}

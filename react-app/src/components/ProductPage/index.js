@@ -75,7 +75,7 @@ const ProductPage = () => {
   const userDeleteProduct = () => {
     if (userState.user && (userState.user.id === productState[productId].user.id)) {
       return (
-        <button
+        <button className="product-page-delete-button"
           onClick={() => {
             productDeleter();
           }}
@@ -94,7 +94,7 @@ const ProductPage = () => {
   const userAddCart = () => {
     if (userState.user) {
       return (
-        <button
+        <button className="product-page-cart-button"
           onClick={() => {
             handleAddToCart();
           }}
