@@ -34,10 +34,13 @@
 }
 
 .createProduct-save {
-  border-radius: 10%;
   justify-items: flex-end;
   color: white;
   background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .createProduct-save-container {

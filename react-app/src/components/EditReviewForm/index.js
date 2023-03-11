@@ -42,7 +42,7 @@ const EditReviewForm = ({ review, productId }) => {
             <li key={index}>Error: {error}</li>
           ))}
         </div>
-        <div>
+        <div className="edit-review-modal">
           <p>Edit Your Review:</p>
           <input
             type="text"
@@ -62,7 +62,7 @@ const EditReviewForm = ({ review, productId }) => {
             max="5"
           />
           <div>
-            <button type="submit">
+            <button className="edit-review-button" type="submit">
               Edit Your Review
             </button>
           </div>

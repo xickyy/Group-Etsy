@@ -1,0 +1,20 @@
+.edit-product-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.edit-product-form-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    width: 300px;
+}
+
+.edit-product-form-inputs {
+    margin-bottom: 10px;
+}

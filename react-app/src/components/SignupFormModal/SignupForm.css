@@ -1,0 +1,25 @@
+.signup-modal-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.signup-modal-div {
+    padding-left: 40px;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-modal-input-title {
+    margin-right: 5px;
+}
+
+.signup-modal-header {
+    text-align: center;
+}

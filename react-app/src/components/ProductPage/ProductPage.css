@@ -61,5 +61,17 @@
     display: flex;
 }
 
+.product-page-delete-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
+.product-page-cart-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
