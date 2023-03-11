@@ -57,9 +57,7 @@ function ProfileButton({ user }) {
   let ifUser = () => {
     if (user) {
       return (
-        <button onClick={openMenu}>
-          <img className="profile-button-img" src={user.imageURL}></img>
-        </button>
+          <img className="profile-button-img" src={user.imageURL} onClick={openMenu}></img>
       )
     } else {
       return (

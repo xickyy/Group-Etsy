@@ -9,6 +9,10 @@
   flex-direction: row;
 }
 
+li.navLinks {
+  align-items: center;
+}
+
 .navLinks-logged-out {
   display: flex;
   flex-direction: row;
@@ -40,8 +44,13 @@
 
 
 .profile-button-img {
-  width: 35px;
-  height: 35px;
+  width: 43px;
+  height: 43px;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 
