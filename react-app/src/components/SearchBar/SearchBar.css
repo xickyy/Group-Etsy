@@ -43,7 +43,7 @@ input:focus {
 
 
 .dataResult {
-  position: fixed;
+  position: absolute;
   left: auto;
   margin-top: 5px;
   width: 500px;

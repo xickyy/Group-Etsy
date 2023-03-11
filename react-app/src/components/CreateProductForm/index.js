@@ -52,7 +52,7 @@ const CreateProductForm = () => {
       return (
         <div className='createProduct-errors-container'>
           {errors.map((error, index) => (
-            <li className='createProduct-errors'  key={index}>Error occurred - {error} </li>
+            <li className='createProduct-errors' key={index}>Error occurred - {error} </li>
           ))}
         </div>
 

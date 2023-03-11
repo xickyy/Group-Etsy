@@ -3,4 +3,14 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    margin-left: 5px;
+}
+
+.review-card-first-name {
+    margin-left: 5px;
+}
+
+.review-card-review-body {
+    margin-top: 6px;
+    margin-bottom: 4px;
 }

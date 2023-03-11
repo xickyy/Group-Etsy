@@ -13,14 +13,16 @@ const ReviewCard = ({ review, setHasReview }) => {
 
   if (review.user.id === userState.user?.id) {
     setHasReview(true);
-  };
+  }
 
   const editReviewInfo = () => {
-    if (userState.user && review && (userState.user.id === review.user.id)) {
+    if (userState.user && review && userState.user.id === review.user.id) {
       return (
         <OpenModalButton
           buttonText="Edit Your Review"
-          modalComponent={<EditReviewForm review={review} productId={productId} />}
+          modalComponent={
+            <EditReviewForm review={review} productId={productId} />
+          }
         />
       );
     }
@@ -37,11 +39,11 @@ const ReviewCard = ({ review, setHasReview }) => {
     }
   };
 
-
   const deleteReview = (e) => {
-    if (userState.user && review && (userState.user.id === review.user.id)) {
+    if (userState.user && review && userState.user.id === review.user.id) {
       return (
-        <button className="review-card-delete-button"
+        <button
+          className="review-card-delete-button"
           onClick={() => {
             reviewDeleter();
           }}
@@ -56,8 +58,19 @@ const ReviewCard = ({ review, setHasReview }) => {
     <div>
       <div className="product-page-rev-spacing">
         <u>Rated</u>: {review.stars}/5 Stars
-        <div>{review.body}</div>
-        <div className="product-page-user-img-name-container"> <img className="product-page-user-img" src={review.user.imageURL} alt=''></img>{review.user.firstName}</div>
+        <div className="review-card-review-body">{review.body}</div>
+        <div className="product-page-user-img-name-container">
+          {" "}
+          <img
+            className="product-page-user-img"
+            src={
+              review.user.imageURL ||
+              "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"
+            }
+            alt=""
+          ></img>
+          <div className="review-card-first-name">{review.user.firstName}</div>
+        </div>
         <div className="product-page-edit-rev-buttons">
           {editReviewInfo()}
           {deleteReview()}

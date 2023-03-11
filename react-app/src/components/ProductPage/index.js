@@ -41,7 +41,7 @@ const ProductPage = () => {
 
   if (isLoaded) {
     individualRevArr = Object.values(reviewState);
-  };
+  }
 
   if (isLoaded) {
     individualRevArr = individualRevArr.filter((review) => {
@@ -52,7 +52,10 @@ const ProductPage = () => {
   }
 
   const editProductInfo = () => {
-    if (userState.user && (userState.user.id === productState[productId].user.id)) {
+    if (
+      userState.user &&
+      userState.user.id === productState[productId].user.id
+    ) {
       return (
         <OpenModalButton
           buttonText="Edit Your Product"
@@ -73,9 +76,13 @@ const ProductPage = () => {
   };
 
   const userDeleteProduct = () => {
-    if (userState.user && (userState.user.id === productState[productId].user.id)) {
+    if (
+      userState.user &&
+      userState.user.id === productState[productId].user.id
+    ) {
       return (
-        <button className="product-page-delete-button"
+        <button
+          className="product-page-delete-button"
           onClick={() => {
             productDeleter();
           }}
@@ -94,7 +101,8 @@ const ProductPage = () => {
   const userAddCart = () => {
     if (userState.user) {
       return (
-        <button className="product-page-cart-button"
+        <button
+          className="product-page-cart-button"
           onClick={() => {
             handleAddToCart();
           }}
@@ -123,29 +131,59 @@ const ProductPage = () => {
   return (
     <div>
       {productState[productId] && individualRevArr && (
-        <div className='product-page-container'>
-          <div className='product-page-rev-img'>
-            <img className='product-page-img' src={productState[productId].imageURL} alt="" />
-            <div className='product-page-rev'>
-              <h3>Reviews</h3>
+        <div className="product-page-container">
+          <div className="product-page-rev-img">
+            <img
+              className="product-page-img"
+              src={productState[productId].imageURL || "http://www.rcdrilling.com/wp-content/uploads/2013/12/default_image_01-1024x1024-570x760.png"}
+              alt=""
+            />
+            <div className="product-page-rev">
+              <h3 className="product-page-reviews-header">Reviews</h3>
+              <hr></hr>
               {userAddReview()}
               {individualRevArr.length > 0 &&
                 individualRevArr.map((review) => {
-                  return <ReviewCard key={review.id} review={review} setHasReview={setHasReview} />;
+                  return (
+                    <ReviewCard
+                      key={review.id}
+                      review={review}
+                      setHasReview={setHasReview}
+                    />
+                  );
                 })}
             </div>
           </div>
-          <div className='product-page-details'>
-            <h3 className="product-page-de-price">{`$${productState[productId].price}`}</h3>
-            <div className="product-page-de">{productState[productId].title}</div>
+          <div className="product-page-details">
+            <h3 className="product-page-details-price">{`$${productState[productId].price}`}</h3>
+            <div className="product-page-details-text">
+              {productState[productId].title}
+            </div>
             {userAddCart()}
-            <div className="product-page-de"><h4>Description:</h4> {productState[productId].description}</div>
-            <div className='product-page-edit-del'>
+            <div className="product-page-details-text">
+              <h4>Description:</h4> {productState[productId].description}
+            </div>
+            <br></br>
+            <div className="product-page-returns-exchanges">
+              <b>Returns & exchanges:</b>
+              <br>
+              </br>
+              Not accepted 
+              <br>
+              </br>But please contact me if you have
+              problems with your order
+              <br></br>
+              <br>
+              </br>
+              <b>Etsy Purchase Protection:</b> 
+              <br></br>
+              Shop confidently on Etsy knowing if something goes wrong with an order, we've got your back for all eligible purchases — see program terms
+            </div>
+            <div className="product-page-edit-del">
               {editProductInfo()}
               {userDeleteProduct()}
             </div>
           </div>
-
         </div>
       )}
     </div>

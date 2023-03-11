@@ -102,3 +102,109 @@ li.navLinks {
   cursor: pointer;
   font-weight: bold;
 }
+
+@media screen and (min-width: 1200px) {
+  .hidden {
+    display: none;
+  }
+  
+  .navLinks {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  li.navLinks {
+    align-items: center;
+  }
+  
+  .navLinks-logged-out {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .prof-button {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .navLinks-logged-in {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .allNavLinks {
+    display: flex;
+    justify-content: space-between;
+    padding: auto;
+    margin: auto;
+  }
+  
+  #link {
+    padding: 10px;
+    margin: auto;
+  }
+  
+  .profile-button-img {
+    width: 30px;
+    height: 27px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .navigation-etsy-logo {
+    max-width: 200px;
+    max-height: 35px;
+    margin-left: -2rem;
+  }
+  
+  .profile-button-img-logged-out {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .demo-login {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logged-in-profile-dropdown {
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+    font-weight: bold;
+    list-style-type: none;
+    margin-left: -2rem;
+  }
+  
+  .logged-in-profile-dropdown-user-info {
+    border: none;
+    border-radius: 5px;
+    list-style-type: none;
+    margin-left: -2rem;
+    font-size: 11pt;
+  }
+  
+  .logout-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .user-details-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}

@@ -70,7 +70,7 @@
     padding-top: 5px;
     background-color: white;
     border-radius: 15px;
-    width: 7%;
+    width: 60px;
     height: 24px;
     text-align: center;
     font-size: 10.5pt;
@@ -83,8 +83,9 @@
       'product product product product'
       'product product product product';
       margin-bottom: 50px;
-      margin-top: -26rem;
-      margin-left: 50px;
+      margin-top: -26.5rem;
+      margin-left: 17px;
+      margin-right: 15px;
       position: static;
     }
 
@@ -149,7 +150,7 @@
         padding-top: 5px;
         background-color: white;
         border-radius: 15px;
-        width: 7%;
+        width: 60px;
         height: 24px;
         text-align: center;
         font-size: 10.5pt;
@@ -229,7 +230,7 @@
         padding-top: 5px;
         background-color: white;
         border-radius: 15px;
-        width: 7%;
+        width: 60px;
         height: 24px;
         text-align: center;
         font-size: 10.5pt;

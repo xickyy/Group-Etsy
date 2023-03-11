@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
   let ifUser = () => {
     if (user) {
       return (
-          <img className="profile-button-img" src={user.imageURL} onClick={openMenu}></img>
+          <img className="profile-button-img" src={user.imageURL || "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"} onClick={openMenu}></img>
       )
     } else {
       return (
