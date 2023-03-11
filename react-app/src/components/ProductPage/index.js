@@ -2,51 +2,78 @@ import "./ProductPage.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { oneProductThunk, deleteProductThunk } from "../../store/products";
+import { addCartThunk } from "../../store/cart";
 import { allReviewsByProductIdThunk } from "../../store/reviews";
 import { useParams, useHistory } from "react-router-dom";
 import CreateReviewForm from "../CreateReviewForm";
 import OpenModalButton from "../OpenModalButton";
 import ReviewCard from "../ReviewCard";
+import EditProductForm from "../EditProductForm";
 
 const ProductPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const { productId } = useParams();
+  const [hasReview, setHasReview] = useState(false);
 
   useEffect(() => {
-    dispatch(oneProductThunk(productId)).then(() => setIsLoaded(true));
-  }, [dispatch, productId]);
-
-  useEffect(() => {
-    dispatch(allReviewsByProductIdThunk(productId));
+    dispatch(oneProductThunk(productId))
+      .then(dispatch(allReviewsByProductIdThunk(productId)))
+      .then(() => setIsLoaded(true));
   }, [dispatch, productId]);
 
   let productState = useSelector((state) => state.products);
   let userState = useSelector((state) => state.session);
-  let reviewState = useSelector((state) => state.reviews);
 
-  let reviewsArr;
+  let userId;
+  if (userState.user) {
+    userId = userState.user.id;
+  }
+
+  const payload = {
+    productId,
+    userId,
+  };
+
+  let reviewState = useSelector((state) => state.reviews);
+  let individualRevArr = [];
+
   if (isLoaded) {
-    reviewsArr = Object.values(reviewState)
+    individualRevArr = Object.values(reviewState);
+  };
+
+  if (isLoaded) {
+    individualRevArr = individualRevArr.filter((review) => {
+      if (review.product.id === parseInt(productId)) {
+        return Object.values(review);
+      }
+    });
   }
 
   const editProductInfo = () => {
-    history.push(`/products/${productId}/edit`);
+    if (userState.user && (userState.user.id === productState[productId].user.id)) {
+      return (
+        <OpenModalButton
+          buttonText="Edit Your Product"
+          modalComponent={<EditProductForm product={productState[productId]} />}
+        />
+      );
+    }
   };
 
   const productDeleter = () => {
     const confirm = window.confirm(
-      `Are you sure you wish to delete the product "${productState.title}"`
+      `Are you sure you wish to delete the product "${productState[productId].title}"?`
     );
     if (confirm) {
       dispatch(deleteProductThunk(productId));
-      history.push("/products");
+      history.push("/");
     }
   };
 
   const userDeleteProduct = () => {
-    if (userState.user && userState.user.id === productState.user.id) {
+    if (userState.user && (userState.user.id === productState[productId].user.id)) {
       return (
         <button
           onClick={() => {
@@ -59,22 +86,31 @@ const ProductPage = () => {
     }
   };
 
-  const userEditProduct = () => {
-    if (userState.user && userState.user.id === productState.user.id) {
+  const handleAddToCart = () => {
+    dispatch(addCartThunk(payload));
+    history.push("/cart_items");
+  };
+
+  const userAddCart = () => {
+    if (userState.user) {
       return (
         <button
           onClick={() => {
-            editProductInfo();
+            handleAddToCart();
           }}
         >
-          Edit Product
+          Add to Cart
         </button>
       );
     }
   };
 
   const userAddReview = () => {
-    if (userState.user && userState.user.id !== productState.user.id) {
+    if (
+      userState.user &&
+      userState.user?.id !== productState[productId].user.id &&
+      !hasReview
+    ) {
       return (
         <OpenModalButton
           buttonText="Create a Review"
@@ -84,24 +120,24 @@ const ProductPage = () => {
     }
   };
 
-
   return (
     <div>
-      {productState && reviewsArr && (
+      {productState[productId] && individualRevArr && (
         <div>
-          <div>{productState.title}</div>
-          <img src={productState.imageURL} alt="" />
-          <div>{productState.price}</div>
-          <div>{productState.description}</div>
-
-          {reviewsArr.length > 0 &&
-            reviewsArr.map((review) => {
-              return <ReviewCard key={review.id} review={review} />;
+          <div>{productState[productId].title}</div>
+          <img src={productState[productId].imageURL} alt="" />
+          <div>Price: ${productState[productId].price}</div>
+          <div>Description: {productState[productId].description}</div>
+          {userAddCart()}
+          <h3>Reviews</h3>
+          {individualRevArr.length > 0 &&
+            individualRevArr.map((review) => {
+              return <ReviewCard key={review.id} review={review} setHasReview={setHasReview} />;
             })}
-          {userEditProduct()}
+          {editProductInfo()}
           {userDeleteProduct()}
 
-          {userAddReview()} 
+          {userAddReview()}
         </div>
       )}
     </div>

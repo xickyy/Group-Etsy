@@ -3,13 +3,27 @@ from app.models import db, Review, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_reviews():
     review1 = Review(
-        body="This is a really good pillow!", stars=4, product_id=1, user_id=3)
+        body="Absolutely loved these - made my whole room look more put together immediately!", stars=4, product_id=1, user_id=3)
     review2 = Review(
-        body="Broke the first try!", stars=1, product_id=2, user_id=1)
+        body="Stunning addition to my living room.", stars=5, product_id=2, user_id=1)
     review3 = Review(
         body="Great quality, but got the wrong size.", stars=3, product_id=3, user_id=2)
+    review4 = Review(
+        body="After wearing this hat, I noticed that my coding skills increased!", stars=5, product_id=4, user_id=2)
+    review5 = Review(
+        body="Love this bookshelf so much - everyone who's come over has asked me where I got it!", stars=4, product_id=5, user_id=3)
+    review6 = Review(
+        body="This really brings my whole living room together! But the quality could be better...", stars=4, product_id=6, user_id=1)
+    review7 = Review(
+        body="This cat is awesome! And Gabe is a huge help when it comes to debugging - 10/10 would recommend.", stars=5, product_id=7, user_id=3)
+    review8 = Review(
+        body="I bought this for my boyfriend and he loved it!", stars=3, product_id=8, user_id=2)
+    review9 = Review(
+        body="It's party time!", stars=5, product_id=9, user_id=1)
+    review10 = Review(
+        body="All the stones came broken...", stars=1, product_id=10, user_id=2)
 
-    reviews = [review1, review2, review3]
+    reviews = [review1, review2, review3, review4, review5, review6, review7, review8, review9, review10]
     for review in reviews:
         db.session.add(review)
 
@@ -26,5 +40,5 @@ def undo_reviews():
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM reviews")
-        
+
     db.session.commit()

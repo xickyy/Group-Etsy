@@ -9,15 +9,25 @@ def seed_cart_items():
     item3 = CartItem(
         user_id=2, product_id=3)
     item4 = CartItem(
-        user_id=3, product_id=1)
+        user_id=3, product_id=7)
     item5 = CartItem(
-        user_id=3, product_id=2)
+        user_id=3, product_id=8)
+    item6 = CartItem(
+        user_id=1, product_id=6)
+    item7 = CartItem(
+        user_id=1, product_id=9)
+    item8 = CartItem(
+        user_id=2, product_id=10)
+    item9 = CartItem(
+        user_id=3, product_id=4)
+    item10 = CartItem(
+        user_id=2, product_id=5)
 
 
-    items = [item1, item2, item3, item4, item5]
+    items = [item1, item2, item3, item4, item5, item6, item7, item8, item9, item10]
     for item in items:
         db.session.add(item)
-    
+
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -31,5 +41,5 @@ def undo_cart_items():
         db.session.execute(f"TRUNCATE table {SCHEMA}.cart_items RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM cart_items")
-        
+
     db.session.commit()

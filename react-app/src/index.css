@@ -1,1 +1,19 @@
 /* TODO Add site wide styles */
+
+a, div {
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    color: #222;
+    text-decoration: none;
+};
+
+a:hover {
+    background-color: #ffffff;
+}
+
+h1 {
+    font-family: ""Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif";
+}
+
+h2 {
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+}

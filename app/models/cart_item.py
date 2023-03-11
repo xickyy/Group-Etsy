@@ -13,11 +13,14 @@ class CartItem(db.Model):
     user = db.relationship("User", back_populates="cart_items")
     product = db.relationship("Product", back_populates="cart_items")
 
+
     def to_dict(self):
+        print(dir(self.product))
         return {
             'id': self.id,
-            # 'userId': self.user_id,
-            # 'productId': self.product_id
-            'user': self.user.to_dict_flat_user(),
-            'product': self.product.to_dict()
+            # 'user': self.user.to_dict_flat_user(),
+            'user': self.user_id,
+            # 'product': self.product_id,
+            'product': self.product.to_dict_cart_product()
+            # 'product': [ prod.to_dict_cart_product() for prod in self.product ]
         }

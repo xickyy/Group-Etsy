@@ -64,7 +64,14 @@ export const makeProductThunk = (product) => async (dispatch) => {
     const newProduct = await res.json();
     dispatch(addProduct(newProduct));
     return newProduct;
-  }
+  } else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
 };
 
 export const editProductThunk = (product) => async (dispatch) => {
@@ -97,7 +104,6 @@ const productReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case GET_PRODUCTS:
-      newState = {};
       action.products.forEach((product) => {
         newState[product.id] = product;
       });
@@ -106,14 +112,13 @@ const productReducer = (state = initialState, action) => {
       newState[action.product.id] = action.product;
       return newState;
     case GET_ONE_PRODUCT:
-      newState = {};
-      newState = action.product;
+      newState[action.product.id] = action.product;
       return newState;
     case EDIT_PRODUCT:
       newState[action.product.id] = action.product;
       return newState;
     case DELETE_PRODUCT:
-      newState = {};
+      delete newState[action.id]
       return newState;
     default:
       return newState;

@@ -43,7 +43,7 @@ def add_products():
     """
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
- 
+
     if form.validate_on_submit():
         product = Product(
             title = form.title.data,
@@ -55,7 +55,7 @@ def add_products():
         db.session.add(product)
         db.session.commit()
         return product.to_dict()
-    return {"errors" : "error"}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @product_routes.route('/<int:product_id>', methods=["PUT"])
 def edits_a_product(product_id):
@@ -68,7 +68,7 @@ def edits_a_product(product_id):
     if form.validate_on_submit():
         data = form.data
         product = Product.query.get(product_id)
-       
+
         for key, value in data.items():
             setattr(product, key, value)
         db.session.commit()
@@ -112,6 +112,7 @@ def add_reviews(product_id):
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400    
 
 @product_routes.route('/<int:product_id>/reviews/<int:review_id>', methods=["PUT"])
 def edits_a_review(product_id, review_id):
@@ -124,7 +125,7 @@ def edits_a_review(product_id, review_id):
     if form.validate_on_submit():
         data = form.data
         review = Review.query.get(review_id)
-       
+
         for key, value in data.items():
             setattr(review, key, value)
         db.session.commit()
@@ -140,3 +141,11 @@ def deletes_a_review(product_id, review_id):
     db.session.delete(review)
     db.session.commit()
     return {'message': 'Your review has been deleted!'}
+
+@product_routes.route('/reviews/current_user', methods=["GET"])
+def get_reviews_by_user():
+    """
+    Get reviews from current user
+    """
+    reviews = Review.query.filter(Review.user_id == current_user.id).all()
+    return {'reviews': [review.to_dict() for review in reviews]}

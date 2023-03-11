@@ -8,7 +8,9 @@ import Navigation from "./components/Navigation";
 import CreateProductForm from "./components/CreateProductForm";
 import ProductsList from "./components/ProductsList";
 import ProductPage from './components/ProductPage'
-import EditProductForm from "./components/EditProductForm";
+import CreateReviewForm from "./components/CreateReviewForm";
+import Cart from "./components/Cart";
+import UserDetail from "./components/UserDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,14 +24,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <ProductsList />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-          <Route exact path="/products">
-            <ProductsList />
           </Route>
           <Route exact path="/products/create">
             <CreateProductForm />
@@ -37,8 +39,14 @@ function App() {
           <Route exact path='/products/:productId'>
             <ProductPage />
           </Route>
-          <Route exact path='/products/:productId/edit'>
-            <EditProductForm />
+          <Route exact path='/products/:productId/reviews/create'>
+            <CreateReviewForm />
+          </Route>
+          <Route exact path='/cart_items'>
+            <Cart />
+          </Route>
+          <Route exact path='/user_details'>
+            <UserDetail />
           </Route>
           {/* <ProtectedRoute><Route path="/cart"></Route></ProtectedRoute> */}
         </Switch>

@@ -1,25 +1,22 @@
 import "./ReviewCard.css";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
-import { useEffect } from "react";
 import OpenModalButton from "../OpenModalButton";
 import EditReviewForm from "../EditReviewForm";
-import { allReviewsByProductIdThunk } from "../../store/reviews";
 
-const ReviewCard = ({ review }) => {
-    const history = useHistory();
+const ReviewCard = ({ review, setHasReview }) => {
     const { productId } = useParams();
     const userState = useSelector((state) => state.session);
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(allReviewsByProductIdThunk(productId));
-      }, [dispatch, productId]);
-  
+    if (review.user.id === userState.user?.id) {
+      setHasReview(true);
+    };
+
     const editReviewInfo = () => {
-      if (userState.user && review) {
+      if (userState.user && review && (userState.user.id === review.user.id)) {
         return (
           <OpenModalButton
             buttonText="Edit Your Review"
@@ -27,7 +24,6 @@ const ReviewCard = ({ review }) => {
           />
         );
       }
-      history.push(`/products/${productId}`);
     };
 
     const reviewDeleter = () => {
@@ -35,13 +31,15 @@ const ReviewCard = ({ review }) => {
         `Are you sure you wish to delete your review?`
       );
       if (confirm) {
-        dispatch(deleteReviewThunk(productId, review));
-        window.location.reload()
+        dispatch(deleteReviewThunk(productId, review)).then(() => {
+          setHasReview(false);
+        });
       }
     };
-  
+
+
     const deleteReview = (e) => {
-      if (userState.user && review) {
+      if (userState.user && review && (userState.user.id === review.user.id)) {
         return (
           <button
             onClick={() => {
@@ -53,21 +51,19 @@ const ReviewCard = ({ review }) => {
         );
       }
     };
-  
+
     return (
       <div>
         <div>
-          <div>{review.body}</div>
-          <u>Rated</u>: {review.stars}/5
+          <div>{review.user.firstName}- {review.body}</div>
+          <u>Rated</u>: {review.stars}/5 Stars
         </div>
         <div>
             {editReviewInfo()}
-        </div>
-        <div>
             {deleteReview()}
         </div>
       </div>
     );
   };
-  
+
   export default ReviewCard;

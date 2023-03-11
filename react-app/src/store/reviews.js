@@ -64,6 +64,13 @@ export const makeReviewThunk = (productId, review) => async (dispatch) => {
         const newReview = await res.json();
         dispatch(addReview(newReview));
         return newReview;
+    } else if (res.status < 500) {
+      const data = await res.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
     }
 };
 
@@ -97,7 +104,6 @@ const reviewReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case GET_REVIEWS_PRODUCT:
-      newState = {};
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
@@ -109,7 +115,7 @@ const reviewReducer = (state = initialState, action) => {
       newState[action.review.id] = action.review;
       return newState;
     case DELETE_REVIEW:
-      newState = {};
+      delete newState[action.review.id]
       return newState;
     default:
       return state;

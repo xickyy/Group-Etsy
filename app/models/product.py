@@ -39,3 +39,12 @@ class Product(db.Model):
             # 'userId': self.user_id
             'user': self.user.to_dict_flat_user()
         }
+    
+    def to_dict_cart_product(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'price': self.price,
+            'imageURL': self.image_URL
+        }
