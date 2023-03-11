@@ -58,9 +58,9 @@ const ProductsList = () => {
                   alt="img"
                 />
               </Link>
-              <div className="">{product.title}</div>
+              {/* <div className="">{product.title}</div> */}
               {/* <div>Stars {product.stars}/5</div> */}
-              <div>${product.price}</div>
+              <div className="products-list-price">${product.price}</div>
             </div>
           ))}
       </div>

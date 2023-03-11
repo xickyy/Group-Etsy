@@ -1,8 +1,8 @@
 .products-list-grid {
     display: grid;
     grid-template-areas:
-  'product product product product'
-  'product product product product';
+  'product product product'
+  'product product product';
   position: static;
   margin-bottom: 50px;
   margin-top: -26rem;
@@ -40,9 +40,12 @@
 }
 
 .products-list-image {
-    width: 200px;
-    height: auto;
+    max-width: 200px;
+    max-height: 150px;
+    min-width: 200px;
+    min-height: 150px;
     border-radius: 10px; 
+    object-fit: cover;
 }
 
 #products-list-link {
@@ -55,4 +58,180 @@
 .products-list-products {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.products-list-price {
+    position: absolute;
+    margin-top: 160px;
+    margin-left: 10px;
+    padding-top: 5px;
+    background-color: white;
+    border-radius: 15px;
+    width: 7%;
+    height: 24px;
+    text-align: center;
+    font-size: 10.5pt;
+}
+
+@media screen and (min-width: 1200px) {
+    .products-list-grid {
+        display: grid;
+        grid-template-areas:
+      'product product product product'
+      'product product product product';
+      margin-bottom: 50px;
+      margin-top: -26rem;
+      margin-left: 50px;
+      position: static;
+    }
+
+    .product-list-intro-message {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .products-list-title {
+        display: flex;
+        justify-content: center;
+        font-weight: 100; 
+        font-size: 30px;
+        padding-top: 14px;
+    }
+    
+    .products-list-yellow {
+        background-color: rgb(248, 230, 207);
+        height: 500px;
+        margin-top: 10px;
+        margin-left: -1rem;
+        margin-right: -2rem;
+    }
+    
+    .products-list-blue {
+        background-color: rgb(226, 236, 253);
+        height: 500px;
+        margin-top: 10px;
+        margin-left: -1rem;
+        margin-right: -2rem;
+    }
+
+    .products-list-image {
+        max-width: 317px;
+        max-height: 250px;
+        min-width: 317px;
+        min-height: 250px;
+        border-radius: 10px; 
+        object-fit: cover;
+    }
+
+    #products-list-link {
+        font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+        margin-left: 0.5rem;
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+    }
+    
+    .products-list-products {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .products-list-price {
+        position: absolute;
+        margin-top: 210px;
+        margin-left: 10px;
+        padding-top: 5px;
+        background-color: white;
+        border-radius: 15px;
+        width: 7%;
+        height: 24px;
+        text-align: center;
+        font-size: 10.5pt;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+    .products-list-grid {
+        display: grid;
+        grid-template-areas:
+      'product product product'
+      'product product product';
+      position: static;
+      margin-bottom: 50px;
+      margin-top: -26rem;
+      margin-left: 50px;
+    }
+
+    .product-list-intro-message {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .products-list-title {
+        display: flex;
+        justify-content: center;
+        font-weight: 100; 
+        font-size: 30px;
+        padding-top: 14px;
+    }
+    
+    .products-list-yellow {
+        background-color: rgb(248, 230, 207);
+        height: 500px;
+        margin-top: 10px;
+        margin-left: -1rem;
+        margin-right: -2rem;
+    }
+    
+    .products-list-blue {
+        background-color: rgb(226, 236, 253);
+        height: 500px;
+        margin-top: 10px;
+        margin-left: -1rem;
+        margin-right: -2rem;
+    }
+
+    .products-list-image {
+        max-width: 317px;
+        max-height: 250px;
+        min-width: 317px;
+        min-height: 250px;
+        border-radius: 10px; 
+        object-fit: cover;
+    }
+
+    #products-list-link {
+        font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+        margin-left: 0.5rem;
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+    }
+    
+    .products-list-products {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .products-list-price {
+        position: absolute;
+        margin-top: 210px;
+        margin-left: 10px;
+        padding-top: 5px;
+        background-color: white;
+        border-radius: 15px;
+        width: 7%;
+        height: 24px;
+        text-align: center;
+        font-size: 10.5pt;
+    }
 }
