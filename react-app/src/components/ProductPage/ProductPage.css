@@ -5,7 +5,7 @@
 
 .product-page-img {
     width: 50%;
-    height: auto;
+    height: 50%;
     margin-left: 20%;
     margin-top: 10px;
 }
@@ -48,6 +48,13 @@
     display: flex;
     align-items: center;
     margin-right: 10px;
+}
+
+.product-page-edit-rev-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 35px;
 }
 
 

@@ -58,8 +58,10 @@ const ReviewCard = ({ review, setHasReview }) => {
         <u>Rated</u>: {review.stars}/5 Stars
         <div>{review.body}</div>
         <div className="product-page-user-img-name-container"> <img className="product-page-user-img" src={review.user.imageURL} alt=''></img>{review.user.firstName}</div>
-        {editReviewInfo()}
-        {deleteReview()}
+        <div className="product-page-edit-rev-buttons">
+          {editReviewInfo()}
+          {deleteReview()}
+        </div>
       </div>
     </div>
   );
