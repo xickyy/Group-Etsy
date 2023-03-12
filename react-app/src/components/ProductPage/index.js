@@ -70,8 +70,9 @@ const ProductPage = () => {
       `Are you sure you wish to delete the product "${productState[productId].title}"?`
     );
     if (confirm) {
-      dispatch(deleteProductThunk(productId));
-      history.push("/");
+      dispatch(deleteProductThunk(productId)).then(() => {
+        history.push("/")
+      });
     }
   };
 

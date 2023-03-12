@@ -24,7 +24,7 @@ const EditProductForm = ({ product }) => {
   const updateImageURL = (e) => setImageURL(e.target.value);
 
   useEffect(() => {
-    dispatch(allProductsThunk());
+    dispatch(allProductsThunk())
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
@@ -38,6 +38,7 @@ const EditProductForm = ({ product }) => {
       imageURL,
     };
 
+    
     const editedProduct = await dispatch(editProductThunk(payload))
     if (!editedProduct.id) {
       setErrors(editedProduct);
