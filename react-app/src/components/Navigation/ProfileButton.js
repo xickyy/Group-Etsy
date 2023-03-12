@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
   let ifUser = () => {
     if (user) {
       return (
-          <img className="profile-button-img" src={user.imageURL || "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"} alt='' onClick={openMenu}></img>
+        <img className="profile-button-img" src={user.imageURL || "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"} alt='' onClick={openMenu}></img>
       )
     } else {
       return (
@@ -71,36 +71,38 @@ function ProfileButton({ user }) {
   return (
     <>
       {ifUser()}
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li className="logged-in-profile-dropdown-user-info">{user.username}</li>
-            <li className="logged-in-profile-dropdown-user-info">{user.email}</li>
-            <li className="logged-in-profile-dropdown"><button className="user-details-button" onClick={handleUserDetails}>User Details</button></li>
-            <li className="logged-in-profile-dropdown">
-              <button className="logout-button" onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+      <div className="profile-button-container-dropdown">
+        <ul className={ulClassName} ref={ulRef}>
+          {user ? (
+            <>
+              <li className="logged-in-profile-dropdown-user-info">{user.username}</li>
+              <li className="logged-in-profile-dropdown-user-info">{user.email}</li>
+              <li className="logged-in-profile-dropdown"><button className="user-details-button" onClick={handleUserDetails}>User Details</button></li>
+              <li className="logged-in-profile-dropdown">
+                <button className="logout-button" onClick={handleLogout}>Log Out</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <OpenModalButton
+                buttonText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+              <OpenModalButton
+                buttonText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
 
-            <form onSubmit={demoSubmit}>
-              <button className="demo-login">Demo Log In</button>
-            </form>
-          </>
-        )}
-      </ul>
+              <form onSubmit={demoSubmit}>
+                <button className="demo-login">Demo Log In</button>
+              </form>
+            </>
+          )}
+        </ul>
+      </div>
     </>
   );
 }
