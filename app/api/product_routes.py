@@ -57,7 +57,9 @@ def add_products():
         return product.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
 @product_routes.route('/<int:product_id>', methods=["PUT"])
+@login_required
 def edits_a_product(product_id):
     """
     Edits a product by ID.
@@ -66,13 +68,22 @@ def edits_a_product(product_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        data = form.data
         product = Product.query.get(product_id)
 
-        for key, value in data.items():
-            setattr(product, key, value)
+        if product is None:
+            return {'errors': ['Product not found']}, 404
+
+        if product.user_id != current_user.id:
+            return {'errors': ['You are not authorized to edit this product']}, 403
+
+        product.title = form.title.data
+        product.description = form.description.data
+        product.price = form.price.data
+        product.image_URL = form.imageURL.data
+
         db.session.commit()
         return product.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @product_routes.route('/<int:product_id>', methods=["DELETE"])
