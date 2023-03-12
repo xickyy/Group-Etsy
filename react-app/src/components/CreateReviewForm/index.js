@@ -16,7 +16,6 @@ const CreateReviewForm = (productId) => {
   const updateBody = (e) => setBody(e.target.value);
   const updateStars = (e) => setStars(e.target.value);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,7 +31,6 @@ const CreateReviewForm = (productId) => {
       closeModal()
     }
   };
-
 
   return sessionUser.id ? (
     <form onSubmit={handleSubmit}>
