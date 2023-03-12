@@ -19,3 +19,16 @@
 .login-modal-input-title {
     margin-right: 5px;
 }
+
+.login-errors-container {
+    color: red;
+    background-color: rgb(252, 227, 227);
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.login-errors {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-top: 5px;
+}
