@@ -93,13 +93,14 @@ const ProductPage = () => {
     }
   };
 
+
   const handleAddToCart = () => {
     dispatch(addCartThunk(payload));
     history.push("/cart_items");
   };
 
   const userAddCart = () => {
-    if (userState.user) {
+    if (userState.user && userState.user.id !== productState[productId].user.id) {
       return (
         <button
           className="product-page-cart-button"
@@ -168,14 +169,14 @@ const ProductPage = () => {
               <b>Returns & exchanges:</b>
               <br>
               </br>
-              Not accepted 
+              Not accepted
               <br>
               </br>But please contact me if you have
               problems with your order
               <br></br>
               <br>
               </br>
-              <b>Etsy Purchase Protection:</b> 
+              <b>Etsy Purchase Protection:</b>
               <br></br>
               Shop confidently on Etsy knowing if something goes wrong with an order, we've got your back for all eligible purchases — see program terms
             </div>

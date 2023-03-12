@@ -105,7 +105,7 @@ const CreateProductForm = () => {
           </div>
           <input
             className='createProduct-input'
-            type="number"
+            type="decimal"
             min="0"
             placeholder="Price here"
             value={price || ""}

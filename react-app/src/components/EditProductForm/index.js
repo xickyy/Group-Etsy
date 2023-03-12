@@ -10,7 +10,7 @@ const EditProductForm = ({ product }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const productId = product.id;
- 
+
   const [title, setTitle] = useState(product.title);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
@@ -74,7 +74,7 @@ const EditProductForm = ({ product }) => {
         />
 
         <input className="edit-product-form-inputs"
-          type="number"
+          type="decimal"
           min="0"
           placeholder="Price here"
           value={price || ""}
