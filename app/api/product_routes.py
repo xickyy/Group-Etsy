@@ -158,5 +158,5 @@ def get_reviews_by_user():
     """
     Get reviews from current user
     """
-    reviews = Review.query.get(Review.user_id == current_user.id).all()
+    reviews = Review.query.filter(Review.user_id == current_user.id).all()
     return {'reviews': [review.to_dict() for review in reviews]}
