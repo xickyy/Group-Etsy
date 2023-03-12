@@ -54,7 +54,7 @@ const ProductsList = () => {
               <Link to={`/products/${product.id}`}>
                 <img
                   className="products-list-image"
-                  src={product.imageURL}
+                  src={product.imageURL || "http://www.rcdrilling.com/wp-content/uploads/2013/12/default_image_01-1024x1024-570x760.png"}
                   alt="img"
                 />
               </Link>
