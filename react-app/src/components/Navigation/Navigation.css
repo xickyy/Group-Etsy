@@ -7,11 +7,20 @@
   margin-top: 130px;
   margin-right: 1000px;
   background-color: lightgray;
-  height: 80px;
+  height: 73px;
   border-radius: 10px;
-  margin-left: -10px;
+  margin-left: -12px;
 
 }
+
+.profile-button-container-dropdown-logged-out {
+  height: 73px;
+  background-color: lightgray;
+  margin-left: -80px;
+  width: 80px;
+  border-radius: 10px;
+}
+
 
 .navLinks {
   display: flex;
@@ -122,12 +131,19 @@ li.navLinks {
   .profile-button-container-dropdown {
     position: absolute;
     margin-top: 130px;
-    margin-right: 1000px;
     background-color: lightgray;
-    height: 80px;
+    height: 73px;
     border-radius: 10px;
     margin-left: -22px;
 
+  }
+
+  .profile-button-container-dropdown-logged-out {
+    height: 73px;
+    background-color: lightgray;
+    margin-left: -70px;
+    width: 80px;
+    border-radius: 10px;
   }
 
   .navLinks {
