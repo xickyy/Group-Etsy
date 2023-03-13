@@ -2,10 +2,6 @@
   display: flex;
 }
 
-/* .search {
-  max-width: 75%;
-} */
-
 .search input {
   background-color: white;
   border-color: black;
