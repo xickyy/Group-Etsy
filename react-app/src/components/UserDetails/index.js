@@ -23,14 +23,13 @@ const UserDetail = () => {
           const { reviews } = await reviewsResponse.json();
           setAllReviews(reviews);
          
-          const userResponse = await fetch(`/api/products/${userId}`);
-          const { user } = await userResponse.json();
+          const userResponse = await fetch(`/api/users/${userId}`);
+          const  user  = await userResponse.json();
           setUser(user);
         }
         fetchData();
       }, []);
 
-      
     let productArr;
     productArr = allProducts.filter((product) => {
         if (product.user.id === userState.user.id) {
@@ -41,8 +40,8 @@ const UserDetail = () => {
 return (
     <div>
         <div className='user-detail-user-info'>
-            <img src={currentUser.imageURL} alt='img' className='user-detail-user-image'/>
-            <h2>{currentUser.firstName}</h2>
+        <img src={currentUser.imageURL || "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"} alt='img' className='user-detail-user-image'/>
+        <h2>{currentUser.firstName}</h2>
         </div>
         <div><h2>My Products</h2></div>
         <div className='user-detail-product-arrange'>{
