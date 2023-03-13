@@ -158,6 +158,7 @@
     
     .product-page-edit-del {
         display: flex;
+        margin-left: -10px;
     }
     
     .product-page-delete-button {

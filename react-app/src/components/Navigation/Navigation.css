@@ -183,11 +183,12 @@ div#link.search {
   }
 
   .prof-button {
-    width: 100%;
+    width: 80%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    margin-left: 9px;
   }
 
   .navLinks-logged-in {
