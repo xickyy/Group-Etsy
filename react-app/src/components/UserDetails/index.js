@@ -44,7 +44,7 @@ const UserDetail = () => {
             currentUser.imageURL ||
             "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"
           }
-          alt="img"
+          alt=""
           className="user-detail-user-image"
         />
         <h2 className="user-details-name">{currentUser.firstName}</h2>
