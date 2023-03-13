@@ -3,24 +3,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
   }
 
 .cart-product-info {
     display: flex;
     width: 500px;
-    justify-content: space-between;
     align-items: center;
   }
 
 .cart-product-details {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 40px;
   }
 
 .cart-product-image {
     width: 200px;
     height: auto;
+    border-radius: 5px;
 }
 
 .cart-product-price {
