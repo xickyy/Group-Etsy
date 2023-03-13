@@ -75,7 +75,7 @@ function ProfileButton({ user }) {
         <ul className={ulClassName} ref={ulRef}>
           {user ? (
             <div className="logged-in-profile-dropdown-user-info-div">
-              <li className="logged-in-profile-dropdown-user-info">{user.username}</li>
+              <b><li className="logged-in-profile-dropdown-user-info">{user.firstName}</li></b>
               <li className="logged-in-profile-dropdown-user-info">{user.email}</li>
               <li className="logged-in-profile-dropdown"><button className="user-details-button" onClick={handleUserDetails}>User Details</button></li>
               <li className="logged-in-profile-dropdown">
