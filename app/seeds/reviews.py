@@ -22,8 +22,12 @@ def seed_reviews():
         body="It's party time!", stars=5, product_id=9, user_id=1)
     review10 = Review(
         body="All the stones came broken...", stars=1, product_id=10, user_id=2)
+    review11 = Review(
+        body="Beautiful stamp. I love using it for all my books!", stars=5, product_id=11, user_id=2)
+    review12 = Review(
+        body="Absolutely love this candle! So cute and creative, would definitely recommend!", stars=5, product_id=12, user_id=1)
 
-    reviews = [review1, review2, review3, review4, review5, review6, review7, review8, review9, review10]
+    reviews = [review1, review2, review3, review4, review5, review6, review7, review8, review9, review10, review11, review12]
     for review in reviews:
         db.session.add(review)
 

@@ -22,9 +22,13 @@ def seed_products():
         title='The Mask', description='Please wear with caution!', price=42.50, image_URL="https://i.etsystatic.com/23074566/r/il/3f7320/2762529568/il_fullxfull.2762529568_1z5m.jpg", user_id=2)
     product10 = Product(
         title='Chakra Set', description='7 Chakra Stones + 1 Healing Crystals Necklace - Healing Stones Kit with Life Tree Necklace', price=10.79, image_URL="https://i.etsystatic.com/38981368/r/il/3c5670/4557800782/il_794xN.4557800782_hwb9.jpg", user_id=3)
+    product11 = Product(
+        title='Personalized Library Stamp', description='This personalized stamp is handcrafted, eco-friendly, and ethically sourced.', price=27.09, image_URL="https://i.etsystatic.com/13564764/r/il/05350a/4118660256/il_1588xN.4118660256_slzq.jpg", user_id=3)
+    product12 = Product(
+        title='Cereal Soy Candle', description='Add this big bowl of cereal into your routine and light up your morning! Made from vegetable wax and beeswax, they are petroleum-free, phthalate-free, and cruelty-free. Each of them is poured and painted by hand.', price=24.99, image_URL="https://i.etsystatic.com/21595553/r/il/0fe6fe/4689563159/il_1588xN.4689563159_q1g9.jpg", user_id=3)
 
 
-    products = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]
+    products = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12]
     for product in products:
         db.session.add(product)
 
