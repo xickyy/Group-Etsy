@@ -2,6 +2,10 @@
   display: flex;
 }
 
+/* .search {
+  max-width: 75%;
+} */
+
 .search input {
   background-color: white;
   border-color: black;
@@ -50,8 +54,9 @@ input:focus {
   left: auto;
   margin-top: 5px;
   /* width: 1156px; */
-  width: 500px;
-  height: 200px;
+  /* width: 100%; */
+  width: 78.5%;
+  height: 120px;
   background-color: white;
   box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
   overflow: hidden;
@@ -64,8 +69,8 @@ input:focus {
 }
 
 .dataResult .dataItem {
-  width: 100%;
-  height: 50px;
+  /* width: 78.5%; */
+  height: 58px;
   display: flex;
   align-items: center;
   color: black;
