@@ -4,6 +4,8 @@
     cursor: pointer;
     font-weight: bold;
     width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .create-review-modal {
@@ -16,6 +18,6 @@
 
 .create-review-stars {
     text-align: center;
-    margin-top: -1rem;
-    margin-bottom: 6px;
+    margin-top: -1.5rem;
+    margin-bottom: 20px;
 }

@@ -99,7 +99,7 @@ const CreateReviewForm = (productId) => {
           required
         />
 
-        <p>How would you rate your experience?</p>
+        <p>How would you rate this product?</p><br></br>
         {/* <input
           type="number"
           placeholder="Stars here"
@@ -110,11 +110,11 @@ const CreateReviewForm = (productId) => {
         /> */}
 
         <div className="create-review-stars">
-        <i onClick={handleFirstStar} className={firstStar}></i>
-        <i onClick={handleSecondStar} className={secondStar}></i>
-        <i onClick={handleThirdStar} className={thirdStar}></i>
-        <i onClick={handleFourthStar} className={fourthStar}></i>
-        <i onClick={handleFifthStar} className={fifthStar}></i>
+        <i title="Disappointed" style={{fontSize: "30px"}} onClick={handleFirstStar} className={firstStar}></i>
+        <i title="Not a fan" style={{fontSize: "30px"}} onClick={handleSecondStar} className={secondStar}></i>
+        <i title="It's okay" style={{fontSize: "30px"}} onClick={handleThirdStar} className={thirdStar}></i>
+        <i title="Like it" style={{fontSize: "30px"}} onClick={handleFourthStar} className={fourthStar}></i>
+        <i title="Love it" style={{fontSize: "30px"}} onClick={handleFifthStar} className={fifthStar}></i>
         </div>
 
         <div>
