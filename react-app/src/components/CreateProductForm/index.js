@@ -62,7 +62,7 @@ const CreateProductForm = () => {
 
 
   return sessionUser.id ? (
-    <section>
+    <section className="create-product-form">
       <form onSubmit={handleSubmit}>
         {errorHandle()}
         <div>

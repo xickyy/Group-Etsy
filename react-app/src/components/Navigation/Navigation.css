@@ -4,13 +4,18 @@
 
 .profile-button-container-dropdown {
   position: absolute;
-  margin-top: 130px;
-  margin-right: 1000px;
-  background-color: lightgray;
-  height: 73px;
+  margin-top: 135px;
+  background-color: white;
+  box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
+  height: 95px;
   border-radius: 10px;
-  margin-left: -12px;
+  margin-left: -45px;
+  
+}
 
+.logged-in-profile-dropdown-user-info-div {
+  padding: 10px;
+  height: 73px;
 }
 
 .profile-button-container-dropdown-logged-out {
@@ -73,7 +78,7 @@ img.profile-button-img {
 }
 
 
-img.navigation-etsy-logo {
+.navigation-etsy-logo {
   max-width: 200px;
   max-height: 35px;
   margin-left: -1.5rem;
@@ -108,6 +113,7 @@ img.navigation-etsy-logo {
   list-style-type: none;
   margin-left: -2rem;
   font-size: 11pt;
+  
 }
 
 .logout-button {
@@ -131,12 +137,12 @@ img.navigation-etsy-logo {
 
   .profile-button-container-dropdown {
     position: absolute;
-    margin-top: 130px;
-    background-color: lightgray;
-    height: 73px;
+    margin-top: 135px;
+    background-color: white;
+    box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
+    height: 95px;
     border-radius: 10px;
-    margin-left: -22px;
-
+    margin-left: -45px;
   }
 
   .profile-button-container-dropdown-logged-out {
@@ -231,6 +237,11 @@ img.navigation-etsy-logo {
     list-style-type: none;
     margin-left: -2rem;
     font-size: 11pt;
+  }
+
+  .logged-in-profile-dropdown-user-info-div {
+    padding: 10px;
+    height: 73px;
   }
 
   .logout-button {

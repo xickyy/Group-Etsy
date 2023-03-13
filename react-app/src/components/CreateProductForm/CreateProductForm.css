@@ -1,7 +1,10 @@
+.create-product-form {
+  padding: 80px;
+}
+
 .createProduct-field {
   display: flex;
   flex-direction: row;
-
 }
 
 .createProduct-errors {
@@ -11,7 +14,6 @@
 }
 
 .createProduct-errors-container {
-  color: red;
   background-color: rgb(252, 227, 227);
 }
 
@@ -36,6 +38,7 @@
 .createProduct-save {
   justify-items: flex-end;
   color: white;
+  padding: 8px;
   background-color: black;
   border: none;
   border-radius: 5px;
