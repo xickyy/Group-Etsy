@@ -27,10 +27,10 @@ const Cart = () => {
     let cartReturn;
     if (isLoaded && cartItems && (cartItems.length === 0)) {
         cartReturn = (
-            <>
+            <div className="empty-cart-text">
                 <h2>Your cart is empty.</h2>
                 <a href='/products/'>Discover something unique to fill it up.</a>
-            </>
+            </div>
         )
     } else {
         cartReturn = (

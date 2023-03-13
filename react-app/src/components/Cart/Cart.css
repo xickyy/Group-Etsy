@@ -18,6 +18,10 @@
     margin-left: 40px;
   }
 
+.empty-cart-text {
+    margin-left: 25px;
+}
+
 .cart-product-image {
     width: 200px;
     height: auto;
