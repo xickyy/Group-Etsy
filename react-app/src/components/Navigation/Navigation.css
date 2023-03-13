@@ -20,16 +20,16 @@
 
 .profile-button-container-dropdown-logged-out {
   height: 73px;
-  background-color: lightgray;
-  margin-left: -80px;
+  background-color: white;
+  margin-left: -40px;
   width: 80px;
   border-radius: 10px;
+  margin-left: -40px;
 }
-
 
 .navLinks {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
 }
 
 li.navLinks {
@@ -59,7 +59,7 @@ li.navLinks {
 
 .allNavLinks {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: auto;
   margin: auto;
 }
@@ -81,7 +81,7 @@ img.profile-button-img {
 .navigation-etsy-logo {
   max-width: 200px;
   max-height: 35px;
-  margin-left: -1.5rem;
+  margin-left: -10px;
 }
 
 .profile-button-img-logged-out {
@@ -89,6 +89,8 @@ img.profile-button-img {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  margin-right: 40px;
+  background-color: white;
 }
 
 .demo-login {
@@ -130,6 +132,18 @@ img.profile-button-img {
   font-weight: bold;
 }
 
+.demo-login {
+  background-color: white;
+}
+
+.demo-login-div {
+  margin-top: 5px;
+}
+
+div#link.search {
+  margin-left: 20px;
+}
+
 @media screen and (min-width: 1200px) {
   .hidden {
     display: none;
@@ -147,9 +161,9 @@ img.profile-button-img {
 
   .profile-button-container-dropdown-logged-out {
     height: 73px;
-    background-color: lightgray;
-    margin-left: -70px;
-    width: 80px;
+    background-color: white;
+    margin-left: -40px;
+    width: 90px;
     border-radius: 10px;
   }
 
@@ -185,7 +199,7 @@ img.profile-button-img {
 
   .allNavLinks {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: auto;
     margin: auto;
   }
@@ -205,7 +219,7 @@ img.profile-button-img {
   .navigation-etsy-logo {
     max-width: 200px;
     max-height: 35px;
-    margin-left: -2rem;
+    margin-left: -10px;
   }
 
   .profile-button-img-logged-out {
@@ -213,6 +227,8 @@ img.profile-button-img {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    margin-right: 40px;
+    background-color: white;
   }
 
   .demo-login {
@@ -261,5 +277,17 @@ img.profile-button-img {
 
   #link.navigation-cart {
     margin-right: 25px;
+  }
+
+  .demo-login {
+    background-color: white;
+  }
+
+  .demo-login-div {
+    margin-top: 5px;
+  }
+
+  div#link.search {
+    margin-left: 20px;
   }
 }

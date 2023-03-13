@@ -7,6 +7,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from '../../store/session';
+import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -61,8 +62,8 @@ function ProfileButton({ user }) {
       )
     } else {
       return (
-        <button className="profile-button-img-logged-out" onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+        <button style={{fontSize: "20px"}} className="profile-button-img-logged-out" onClick={openMenu}>
+          <i class="fa-regular fa-user"></i>
         </button>
       )
     }
@@ -86,19 +87,20 @@ function ProfileButton({ user }) {
             <div className="profile-button-container-dropdown-logged-out">
               <OpenModalButton
                 className='profile-button-log-in'
-                buttonText="Log In"
+                buttonText="Login"
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
 
               <OpenModalButton
+                className='profile-button-sign-up'
                 buttonText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
 
-              <form onSubmit={demoSubmit}>
-                <button className="demo-login">Demo Log In</button>
+              <form className="demo-login-div" onSubmit={demoSubmit}>
+                <button className="demo-login">Demo Login</button>
               </form>
             </div>
           )}
