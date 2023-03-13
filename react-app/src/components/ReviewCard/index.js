@@ -57,7 +57,12 @@ const ReviewCard = ({ review, setHasReview }) => {
   return (
     <div>
       <div className="product-page-rev-spacing">
-        <u>Rated</u>: {review.stars}/5 Stars
+        {/* <u>Rated</u>:  */}
+        {review.stars === 1 && <div className="review-card-stars"><i className="fa-sharp fa-solid fa-star"></i></div>}
+        {review.stars === 2 && <div className="review-card-stars"><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i></div>}
+        {review.stars === 3 && <div className="review-card-stars"><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i></div>}
+        {review.stars === 4 && <div className="review-card-stars"><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i></div>}
+        {review.stars === 5 && <div className="review-card-stars"><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i><i className="fa-sharp fa-solid fa-star"></i></div>}
         <div className="review-card-review-body">{review.body}</div>
         <div className="product-page-user-img-name-container">
           {" "}

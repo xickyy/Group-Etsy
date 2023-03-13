@@ -141,8 +141,8 @@ const ProductPage = () => {
               alt=""
             />
             <div className="product-page-rev">
-              <h3 className="product-page-reviews-header">Reviews</h3>
-              <hr></hr>
+              <h3 className="product-page-reviews-header">Reviews for this item</h3>
+              <hr></hr><br></br>
               {userAddReview()}
               {individualRevArr.length > 0 &&
                 individualRevArr.map((review) => {
@@ -181,6 +181,7 @@ const ProductPage = () => {
               <br></br>
               Shop confidently on Etsy knowing if something goes wrong with an order, we've got your back for all eligible purchases — see program terms
             </div>
+      
             <div className="product-page-edit-del">
               {editProductInfo()}
               {userDeleteProduct()}

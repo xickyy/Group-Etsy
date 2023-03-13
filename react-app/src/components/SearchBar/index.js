@@ -6,7 +6,7 @@ const SearchBar = ({ placeholder, data }) => {
 
   const [allProducts, setAllProducts] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const getProducts = async () => {
@@ -16,7 +16,6 @@ const SearchBar = ({ placeholder, data }) => {
     }
     getProducts()
   }, []);
-
 
   const handleFilter = (e) => {
     const searchWord = e.target.value
@@ -36,7 +35,6 @@ const SearchBar = ({ placeholder, data }) => {
     setFilterData([]);
     setSearch('')
   }
-
 
   return (
     <div className="search" id='link'>

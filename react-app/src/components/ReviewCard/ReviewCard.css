@@ -7,10 +7,16 @@
 }
 
 .review-card-first-name {
-    margin-left: 5px;
+    margin-left: 9px;
+    margin-top: 8px;
 }
 
 .review-card-review-body {
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.review-card-stars {
     margin-top: 6px;
     margin-bottom: 4px;
 }

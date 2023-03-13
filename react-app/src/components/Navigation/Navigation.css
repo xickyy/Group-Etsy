@@ -65,17 +65,18 @@ li.navLinks {
 }
 
 
-.profile-button-img {
-  width: 43px;
-  height: 43px;
+img.profile-button-img {
+  width: 26px;
+  height: 23px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 
-.navigation-etsy-logo {
+img.navigation-etsy-logo {
   max-width: 200px;
   max-height: 35px;
+  margin-left: -1.5rem;
 }
 
 .profile-button-img-logged-out {
@@ -188,9 +189,9 @@ li.navLinks {
     margin: auto;
   }
 
-  .profile-button-img {
-    width: 30px;
-    height: 27px;
+  img.profile-button-img {
+    width: 26px;
+    height: 23px;
     border-radius: 50%;
     cursor: pointer;
   }
@@ -244,5 +245,9 @@ li.navLinks {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+  }
+
+  #link.navigation-cart {
+    margin-right: 25px;
   }
 }

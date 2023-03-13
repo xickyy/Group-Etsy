@@ -12,7 +12,7 @@
   font-size: 18px;
   padding: 15px;
   height: 10px;
-  width: 100%;
+  width: 1072px;
 }
 
 .searchIcon {
@@ -46,12 +46,13 @@ input:focus {
   position: absolute;
   left: auto;
   margin-top: 5px;
-  width: 500px;
+  width: 1156px;
   height: 200px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
   overflow: hidden;
   overflow-y: auto;
+  border-radius: 10px;
 }
 
 .dataResult::-webkit-scrollbar {

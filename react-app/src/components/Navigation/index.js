@@ -16,12 +16,12 @@ function Navigation({ isLoaded }) {
 				<li className='navLinks-logged-in'>
 					<NavLink id='link' exact to="/"><img className='navigation-etsy-logo' src={img} alt=''></img></NavLink>
 					<SearchBar id='link' placeholder='Search for a product' />
-					<NavLink id='link' exact to="/products/create">Create a Product Listing</NavLink>
+					<NavLink title="Create a Product Listing" id='link' className="navigation-create-a-product" exact to="/products/create"><i class="fa-solid fa-store"></i></NavLink>
 				</li>
 				{isLoaded && (
 					<li className='navLinks'>
-						<NavLink id = 'link' exact to="/cart_items"><i className="fa-solid fa-cart-shopping"></i></NavLink>
-						<ProfileButton id='profileLink' user={sessionUser} />
+						<ProfileButton title="Your account" id='profileLink' user={sessionUser} />
+						<NavLink title="Cart" id='link' className="navigation-cart" exact to="/cart_items"><i className="fa-solid fa-cart-shopping"></i></NavLink>
 					</li>
 				)}
 			</ul>
