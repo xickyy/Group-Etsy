@@ -18,11 +18,11 @@ const UserDetail = () => {
           const productsResponse = await fetch('/api/products');
           const productsData = await productsResponse.json();
           setAllProducts(productsData.products);
-    
+
           const reviewsResponse = await fetch('/api/products/reviews/current_user');
           const { reviews } = await reviewsResponse.json();
           setAllReviews(reviews);
-         
+
           const userResponse = await fetch(`/api/users/${userId}`);
           const  user  = await userResponse.json();
           setUser(user);
@@ -43,7 +43,7 @@ return (
         <img src={currentUser.imageURL || "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/755c80088d2c6fd111162efa8235ecda~c5_720x720.jpeg?x-expires=1678694400&x-signature=MxBth9PCTul3xkjPNsPVBWzHWfg%3D"} alt='img' className='user-detail-user-image'/>
         <h2>{currentUser.firstName}</h2>
         </div>
-        <div><h2>My Products</h2></div>
+        <div><h2 className='user-details-header'>My Products</h2></div>
         <div className='user-detail-product-arrange'>{
             productArr && productArr.map((product) => (
                 <div key={product.id} className='user-detail-product-card'>
@@ -58,7 +58,7 @@ return (
             ))
         }</div>
         <br></br>
-        <div><h2>My Reviews</h2></div>
+        <div><h2 className='user-details-header'>My Reviews</h2></div>
         <div className='user-detail-product-arrange'>{
             allReviews && allReviews.map((review) => (
                 <div key={review.id} className='user-detail-product-card'>

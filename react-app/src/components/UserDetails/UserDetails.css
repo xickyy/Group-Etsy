@@ -6,9 +6,9 @@
 }
 .user-detail-user-image{
     width:150px;
-    height: 150px; 
-    border-radius: 50%; 
-    object-fit: cover; 
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 .user-detail-user-info {
     display: flex;
@@ -40,4 +40,8 @@
 
 .user-detail-product-title:hover {
     text-decoration: underline;
+}
+
+.user-details-header {
+    text-align: center;
 }
