@@ -1,9 +1,11 @@
 .products-list-grid {
-    display: grid;
+    /* display: grid;
     grid-template-areas:
   'product product product'
-  'product product product';
+  'product product product'; */
   position: static;
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 50px;
   margin-top: -26rem;
   margin-left: 50px;
@@ -76,7 +78,7 @@
     font-size: 10.5pt;
 }
 
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
     .products-list-grid {
         display: grid;
         grid-template-areas:
@@ -235,4 +237,4 @@
         text-align: center;
         font-size: 10.5pt;
     }
-}
+} */
