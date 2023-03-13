@@ -170,16 +170,13 @@ const ProductPage = () => {
               <b>Returns & exchanges:</b>
               <br>
               </br>
-              Not accepted
-              <br>
-              </br>But please contact me if you have
-              problems with your order
+              Not accepted, but please contact me <br></br>if you have problems with your order.
               <br></br>
               <br>
               </br>
-              <b>Etsy Purchase Protection:</b>
+              <b>Epsy Purchase Protection:</b>
               <br></br>
-              Shop confidently on Etsy knowing if something goes wrong with an order, we've got your back for all eligible purchases — see program terms
+              Shop confidently on Epsy knowing if something goes wrong with an order, we've got your back for all eligible purchases.
             </div>
       
             <div className="product-page-edit-del">

@@ -4,18 +4,13 @@
 
 .profile-button-container-dropdown {
   position: absolute;
-  margin-top: 135px;
-  background-color: white;
-  box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
-  height: 95px;
-  border-radius: 10px;
-  margin-left: -45px;
-  
-}
-
-.logged-in-profile-dropdown-user-info-div {
-  padding: 10px;
+  margin-top: 130px;
+  margin-right: 1000px;
+  background-color: lightgray;
   height: 73px;
+  border-radius: 10px;
+  margin-left: -12px;
+
 }
 
 .profile-button-container-dropdown-logged-out {
@@ -70,9 +65,9 @@ li.navLinks {
 }
 
 
-img.profile-button-img {
-  width: 26px;
-  height: 23px;
+.profile-button-img {
+  width: 43px;
+  height: 43px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -81,7 +76,6 @@ img.profile-button-img {
 .navigation-etsy-logo {
   max-width: 200px;
   max-height: 35px;
-  margin-left: -1.5rem;
 }
 
 .profile-button-img-logged-out {
@@ -105,7 +99,6 @@ img.profile-button-img {
   font-weight: bold;
   list-style-type: none;
   margin-left: -2rem;
-  /* margin-right: 14px; */
 }
 
 .logged-in-profile-dropdown-user-info {
@@ -137,12 +130,12 @@ img.profile-button-img {
 
   .profile-button-container-dropdown {
     position: absolute;
-    margin-top: 135px;
-    background-color: white;
-    box-shadow: rgba(72, 69, 69, 0.35) 0px 5px 15px;
-    height: 95px;
+    margin-top: 130px;
+    background-color: lightgray;
+    height: 73px;
     border-radius: 10px;
-    margin-left: -45px;
+    margin-left: -22px;
+
   }
 
   .profile-button-container-dropdown-logged-out {
@@ -195,9 +188,9 @@ img.profile-button-img {
     margin: auto;
   }
 
-  img.profile-button-img {
-    width: 26px;
-    height: 23px;
+  .profile-button-img {
+    width: 30px;
+    height: 27px;
     border-radius: 50%;
     cursor: pointer;
   }
@@ -236,13 +229,7 @@ img.profile-button-img {
     border-radius: 5px;
     list-style-type: none;
     margin-left: -2rem;
-    margin-right: 14px;
     font-size: 11pt;
-  }
-
-  .logged-in-profile-dropdown-user-info-div {
-    padding: 10px;
-    height: 73px;
   }
 
   .logout-button {
@@ -257,9 +244,5 @@ img.profile-button-img {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-  }
-
-  #link.navigation-cart {
-    margin-right: 25px;
   }
 }
