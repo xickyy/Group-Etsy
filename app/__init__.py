@@ -45,7 +45,7 @@ CORS(app)
 def https_redirect():
     if os.environ.get('FLASK_ENV') == 'production':
         if request.headers.get('X-Forwarded-Proto') == 'http':
-            url = request.url.replace('httpsss://', 'httpsss://', 1)
+            url = request.url.replace('http://', 'https://', 1)
             code = 301
             return redirect(url, code=code)
 
