@@ -45,7 +45,7 @@ CORS(app)
 def https_redirect():
     if os.environ.get('FLASK_ENV') == 'production':
         if request.headers.get('X-Forwarded-Proto') == 'http':
-            url = request.url.replace('http://', 'https://', 1)
+            url = request.url.replace('httpsss://', 'httpsss://', 1)
             code = 301
             return redirect(url, code=code)
 
@@ -72,17 +72,17 @@ def api_help():
     for rule in app.url_map.iter_rules():
         if rule.endpoint == 'static':
             continue
-        
+
         route_path = rule.rule
         if route_path not in route_dict:
             route_dict[route_path] = []
-        
+
         for method in rule.methods:
             if method in acceptable_methods:
                 view_func = app.view_functions[rule.endpoint]
                 docstring = view_func.__doc__
                 route_dict[route_path].append((method, docstring))
-    
+
     return route_dict
 
 @app.route('/', defaults={'path': ''})
